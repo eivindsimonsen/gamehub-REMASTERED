@@ -13,26 +13,32 @@ import Login from "./components/pages/login/Login";
 function App() {
   return (
     <>
-      <HeaderNav />
-      <Routes>
-        <Route
-          path="/"
-          element={<Home />}
-        />
-        <Route
-          path="/games"
-          element={<Games />}
-        />
-        <Route
-          path="/sell"
-          element={<Sell />}
-        />
-        <Route
-          path="/login"
-          element={<Login />}
-        />
-      </Routes>
-      <FooterNav />
+      <header>
+        <HeaderNav />
+      </header>
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            path="/games"
+            element={<Games />}
+          />
+          <Route
+            path="/sell"
+            element={<Sell />}
+          />
+          <Route
+            path="/login"
+            element={<Login />}
+          />
+        </Routes>
+      </main>
+      <footer>
+        <FooterNav />
+      </footer>
     </>
   );
 }
