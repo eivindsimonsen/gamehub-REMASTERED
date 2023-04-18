@@ -1,6 +1,6 @@
 // styles
 import "./sass/style.scss";
-// pagages
+// packages
 import { Routes, Route } from "react-router-dom";
 // pages
 import HeaderNav from "./components/nav/HeaderNav";
@@ -9,6 +9,7 @@ import Home from "./components/pages/index/Home";
 import Games from "./components/pages/games/Games";
 import Sell from "./components/pages/sell/Sell";
 import Login from "./components/pages/login/Login";
+import NotFound from "./components/pages/notfound/NotFound";
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
           <Route
             path="/login"
             element={<Login />}
+          />
+          <Route
+            path="/*"
+            element={<NotFound />}
           />
         </Routes>
       </main>

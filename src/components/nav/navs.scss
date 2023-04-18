@@ -1,0 +1,103 @@
+nav {
+  background-color: $PrimaryColor;
+
+  & a {
+    color: $Verylightgray;
+    text-decoration: none;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+}
+
+.brand-logo {
+  display: flex;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+
+  & ul {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0px 40px;
+    align-items: center;
+
+    & div {
+      display: flex;
+    }
+
+    & .search-bar {
+      flex-grow: 1;
+      position: relative;
+
+      & input {
+        margin: 0px 30px;
+        padding: 13px;
+        border-radius: 15px;
+        border: none;
+        width: 100%;
+        max-width: 400px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+
+        &::placeholder {
+          font-family: "Poppins", sans-serif;
+          font-weight: 500;
+        }
+
+        &[type="text"] {
+          padding-left: 35px;
+        }
+      }
+
+      & i.fa-magnifying-glass {
+        position: absolute;
+        top: 50%;
+        left: 40px;
+        transform: translateY(-50%);
+      }
+    }
+
+    li {
+      position: relative;
+      margin: 0px 20px;
+
+      &:hover {
+        cursor: pointer;
+        &::after {
+          content: "";
+          border: 2px solid $AccentColor;
+          bottom: -41px;
+          display: flex;
+          position: absolute;
+          width: 97%;
+        }
+      }
+
+      & .active {
+        color: $Verylightgray;
+        &::after {
+          content: "";
+          border: 2px solid $AccentColor;
+          bottom: -41px;
+          display: flex;
+          position: absolute;
+          width: 97%;
+        }
+      }
+    }
+  }
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &-image {
+    border-radius: 50%;
+    width: 50px;
+  }
+}
