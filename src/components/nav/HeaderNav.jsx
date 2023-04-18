@@ -38,16 +38,15 @@ function HeaderNav() {
             <i className="fa-solid fa-cart-shopping"></i>
           </NavLink>
         </li>
-        <li>
+        <li className="profile-image">
           <NavLink to="/user">
             <img
               src={profile}
               alt="User"
-              className="profile-container-image"
             />
           </NavLink>
         </li>
-        <li className="profile-container">
+        <li>
           <NavLink to="/login">Log in</NavLink>
         </li>
       </ul>

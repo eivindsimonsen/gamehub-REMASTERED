@@ -92,11 +92,8 @@ nav {
   }
 }
 
-.profile-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  &-image {
+.profile-image {
+  & img {
     border-radius: 50%;
     width: 50px;
   }
