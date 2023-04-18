@@ -36,7 +36,7 @@ nav {
       & input {
         margin: 0px 30px;
         padding: 13px;
-        border-radius: 15px;
+        border-radius: 13px;
         border: none;
         width: 100%;
         max-width: 400px;
@@ -46,6 +46,11 @@ nav {
         &::placeholder {
           font-family: "Poppins", sans-serif;
           font-weight: 500;
+        }
+
+        &:focus-visible {
+          outline: 3px solid $AccentColor;
+          border-radius: 13px;
         }
 
         &[type="text"] {
@@ -61,31 +66,49 @@ nav {
       }
     }
 
+    .active-styles {
+      content: "";
+      border: 2px solid $AccentColor;
+      display: flex;
+      position: absolute;
+      width: 97%;
+    }
+
     li {
       position: relative;
       margin: 0px 20px;
 
+      &.profile-image {
+        &:hover {
+          cursor: pointer;
+          &::after {
+            @extend .active-styles;
+            bottom: -21px;
+          }
+        }
+
+        .active {
+          color: $Verylightgray;
+          &::after {
+            @extend .active-styles;
+            bottom: -21px;
+          }
+        }
+      }
+
       &:hover {
         cursor: pointer;
         &::after {
-          content: "";
-          border: 2px solid $AccentColor;
+          @extend .active-styles;
           bottom: -41px;
-          display: flex;
-          position: absolute;
-          width: 97%;
         }
       }
 
       & .active {
         color: $Verylightgray;
         &::after {
-          content: "";
-          border: 2px solid $AccentColor;
+          @extend .active-styles;
           bottom: -41px;
-          display: flex;
-          position: absolute;
-          width: 97%;
         }
       }
     }
@@ -93,6 +116,8 @@ nav {
 }
 
 .profile-image {
+  transform: translateY(5px);
+
   & img {
     border-radius: 50%;
     width: 50px;

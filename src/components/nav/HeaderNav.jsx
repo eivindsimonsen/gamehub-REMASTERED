@@ -38,6 +38,9 @@ function HeaderNav() {
             <i className="fa-solid fa-cart-shopping"></i>
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/login">Log in</NavLink>
+        </li>
         <li className="profile-image">
           <NavLink to="/user">
             <img
@@ -45,9 +48,6 @@ function HeaderNav() {
               alt="User"
             />
           </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login">Log in</NavLink>
         </li>
       </ul>
     </nav>
