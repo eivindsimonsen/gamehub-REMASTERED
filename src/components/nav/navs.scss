@@ -145,6 +145,8 @@ nav {
       & input {
         padding: 13px;
         border-radius: 5px;
+        -webkit-appearance: none;
+        appearance: none;
         border: none;
         width: 100%;
         max-width: 650px;
