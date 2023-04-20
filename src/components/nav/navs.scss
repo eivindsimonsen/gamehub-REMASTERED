@@ -2,7 +2,7 @@ nav {
   background-color: $PrimaryColor;
 
   & a {
-    color: $Verylightgray;
+    color: $Alabaster;
     text-decoration: none;
     font-size: clamp(1rem, 2.5vw, 1.2rem);
   }
@@ -10,14 +10,26 @@ nav {
 
 .brand-logo {
   display: flex;
+  & img {
+    width: clamp(100px, 20vw, 144px);
+  }
 }
 
 .header-nav {
   display: flex;
   align-items: center;
-  padding: 10px 30px;
+  padding: 10px;
 
-  & ul {
+  @media (min-width: 1137px) {
+    padding: 10px 30px;
+  }
+
+  @media (max-width: 1137px) {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  & ul.desktop-nav {
     display: flex;
     flex-basis: 100%;
     justify-content: space-between;
@@ -39,7 +51,7 @@ nav {
         border-radius: 13px;
         border: none;
         width: 100%;
-        max-width: 400px;
+        max-width: 650px;
         font-family: "Poppins", sans-serif;
         font-weight: 400;
 
@@ -88,7 +100,7 @@ nav {
         }
 
         .active {
-          color: $Verylightgray;
+          color: $Alabaster;
           &::after {
             @extend .active-styles;
             bottom: -21px;
@@ -105,12 +117,65 @@ nav {
       }
 
       & .active {
-        color: $Verylightgray;
+        color: $Alabaster;
         &::after {
           @extend .active-styles;
           bottom: -41px;
         }
       }
+    }
+
+    @media (max-width: 1137px) {
+      display: none;
+    }
+  }
+
+  & ul.mobile-nav {
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+
+    & .search-bar {
+      position: relative;
+      flex-basis: 70%;
+
+      & input {
+        padding: 13px;
+        border-radius: 5px;
+        border: none;
+        width: 100%;
+        max-width: 650px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+
+        &::placeholder {
+          font-family: "Poppins", sans-serif;
+          font-weight: 500;
+        }
+
+        &:focus-visible {
+          outline: 3px solid $AccentColor;
+          border-radius: 5px;
+        }
+
+        &[type="text"] {
+          padding-left: 35px;
+        }
+      }
+
+      & i.fa-magnifying-glass {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+      }
+    }
+
+    @media (min-width: 1137px) {
+      display: none;
     }
   }
 }
@@ -121,5 +186,54 @@ nav {
   & img {
     border-radius: 50%;
     width: 50px;
+  }
+}
+
+.desktop-nav {
+  display: none;
+}
+
+.fa-bars,
+.fa-x {
+  color: $Alabaster;
+  font-size: 1.9rem;
+}
+
+.collapse-nav {
+  position: fixed;
+  top: 0;
+  left: 80px;
+  right: 0;
+  bottom: 0;
+  background-color: $SecondaryColor;
+  display: flex;
+  justify-content: space-between;
+  animation: nav-slide 0.3s ease-in-out forwards;
+  text-align: right;
+
+  & > * {
+    margin: 15px;
+  }
+
+  li {
+    margin-bottom: 20px;
+  }
+
+  a {
+    font-size: 1.5rem;
+    white-space: nowrap;
+  }
+
+  & .active {
+    text-decoration: underline;
+  }
+}
+
+@keyframes nav-slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
