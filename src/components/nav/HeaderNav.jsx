@@ -77,41 +77,47 @@ function HeaderNav() {
                 <i
                   onClick={showMenu}
                   className="fa-solid fa-x"></i>
-                <div>
-                  <li className="profile-image">
-                    <NavLink
-                      onClick={showMenu}
-                      to="/user">
-                      <img
-                        src={profile}
-                        alt="User"
-                      />
-                    </NavLink>
-                  </li>
-                </div>
-                <div>
-                  <li>
-                    <NavLink
-                      onClick={showMenu}
-                      to="/games">
-                      Games
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      onClick={showMenu}
-                      to="/sell">
-                      Sell game
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      onClick={showMenu}
-                      className="logout"
-                      to="/login">
-                      Login
-                    </NavLink>
-                  </li>
+                <div className="collapse-nav-actions">
+                  <div>
+                    <li>
+                      <NavLink
+                        onClick={showMenu}
+                        to="/games">
+                        Games
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        onClick={showMenu}
+                        to="/sell">
+                        Sell game
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        onClick={showMenu}
+                        className="logout"
+                        to="/login">
+                        Login
+                      </NavLink>
+                    </li>
+                  </div>
+                  <div className="collapse-nav-user">
+                    <li className="profile-image">
+                      <NavLink
+                        onClick={showMenu}
+                        to="/user">
+                        <img
+                          src={profile}
+                          alt="User"
+                        />
+                      </NavLink>
+                    </li>
+                    <button onClick={() => console.log("You've logged out")}>
+                      Logout
+                      <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
             </>

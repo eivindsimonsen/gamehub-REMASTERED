@@ -196,16 +196,6 @@ nav {
   display: none;
 }
 
-.fa-bars,
-.fa-x {
-  color: $Alabaster;
-  font-size: 1.9rem;
-}
-
-.fa-bars {
-  margin-right: 10px;
-}
-
 .collapse-nav {
   position: fixed;
   top: 0;
@@ -234,6 +224,31 @@ nav {
   & .active {
     text-decoration: underline;
   }
+
+  &-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &-user {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    & .profile-image {
+      margin: 0;
+    }
+
+    & button {
+      color: $Error;
+      background-color: transparent;
+      border: none;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+  }
 }
 
 @keyframes nav-slide {
@@ -243,4 +258,22 @@ nav {
   to {
     transform: translateX(0);
   }
+}
+
+.fa-bars,
+.fa-x {
+  color: $Alabaster;
+  font-size: 1.9rem;
+}
+
+.fa-bars {
+  margin-right: 10px;
+}
+
+.fa-arrow-right-from-bracket {
+  margin-left: 10px;
+}
+
+.fa-cart-shopping {
+  font-size: 1.5rem;
 }
