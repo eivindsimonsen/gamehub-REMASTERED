@@ -140,14 +140,14 @@ nav {
 
     & .search-bar {
       position: relative;
-      flex-basis: 70%;
+      flex-basis: 65%;
 
       & input {
         padding: 13px;
         border-radius: 5px;
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
-        border: none;
+        border: 3px solid $Alabaster;
         width: 100%;
         max-width: 650px;
         font-family: "Poppins", sans-serif;
@@ -159,11 +159,9 @@ nav {
         }
 
         &:focus-visible {
-          outline: 3px solid $AccentColor;
+          border: 3px solid $AccentColor;
           border-radius: 5px;
-          // outline: none;
-          -webkit-outline-radius: 5px;
-          -moz-outline-radius: 5px;
+          outline: none;
         }
 
         &[type="text"] {
@@ -202,6 +200,10 @@ nav {
 .fa-x {
   color: $Alabaster;
   font-size: 1.9rem;
+}
+
+.fa-bars {
+  margin-right: 10px;
 }
 
 .collapse-nav {
