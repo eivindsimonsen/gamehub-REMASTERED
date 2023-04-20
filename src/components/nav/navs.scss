@@ -147,7 +147,7 @@ nav {
         border-radius: 5px;
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
-        border: 3px solid $Alabaster;
+        border: none;
         width: 100%;
         max-width: 650px;
         font-family: "Poppins", sans-serif;
@@ -159,9 +159,11 @@ nav {
         }
 
         &:focus-visible {
-          border: 3px solid $AccentColor;
+          outline: 3px solid $AccentColor;
           border-radius: 5px;
-          outline: none;
+          // outline: none;
+          -webkit-outline-radius: 5px;
+          -moz-outline-radius: 5px;
         }
 
         &[type="text"] {
