@@ -1,4 +1,6 @@
-import React from "react";
+// hooks
+import { useState } from "react";
+// images
 import image from "../../../assets/igor-karimov-9AmKnNZw3GA-unsplash.jpg";
 import product1 from "../../../assets/GameHub_covers.jpg";
 import product2 from "../../../assets/GameHub_covers2.jpg";
@@ -12,6 +14,9 @@ import product9 from "../../../assets/GameHub_covers9.jpg";
 import product10 from "../../../assets/GameHub_covers10.jpg";
 
 function Home() {
+  const [images] = useState([product1, product2, product3, product4, product5, product6, product7, product8, product9, product10]);
+  console.log(images);
+
   return (
     <>
       <section className="home-intro">
@@ -23,66 +28,16 @@ function Home() {
         <div className="home-intro-header">
           <div className="slider">
             <div className="slide-track">
-              <div className="slide">
-                <img
-                  src={product1}
-                  alt=""
-                />
-              </div>
-              <div className="slide">
-                <img
-                  src={product2}
-                  alt=""
-                />
-              </div>
-              <div className="slide">
-                <img
-                  src={product3}
-                  alt=""
-                />
-              </div>
-              <div className="slide">
-                <img
-                  src={product4}
-                  alt=""
-                />
-              </div>
-              <div className="slide">
-                <img
-                  src={product5}
-                  alt=""
-                />
-              </div>
-              <div className="slide">
-                <img
-                  src={product6}
-                  alt=""
-                />
-              </div>
-              <div className="slide">
-                <img
-                  src={product7}
-                  alt=""
-                />
-              </div>
-              <div className="slide">
-                <img
-                  src={product8}
-                  alt=""
-                />
-              </div>
-              <div className="slide">
-                <img
-                  src={product9}
-                  alt=""
-                />
-              </div>
-              <div className="slide">
-                <img
-                  src={product10}
-                  alt=""
-                />
-              </div>
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className="slide">
+                  <img
+                    src={image}
+                    alt=""
+                  />
+                </div>
+              ))}
             </div>
           </div>
           <h1>
