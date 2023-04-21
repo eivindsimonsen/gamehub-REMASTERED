@@ -10,7 +10,7 @@
     object-fit: cover;
     object-position: top;
 
-    @media (max-width: 1129px) {
+    @media (max-width: 1128px) {
       display: none;
     }
   }
@@ -79,27 +79,26 @@ $animationSpeed: 40s;
 
   @media (min-width: 1129px) {
     width: 800px;
-  }
+    &::before,
+    &::after {
+      @include white-gradient;
+      content: "";
+      height: 359px;
+      position: absolute;
+      width: 30px;
+      z-index: 2;
+    }
 
-  &::before,
-  &::after {
-    @include white-gradient;
-    content: "";
-    height: 359px;
-    position: absolute;
-    width: 50px;
-    z-index: 2;
-  }
+    &::after {
+      right: 0;
+      top: 0;
+      transform: rotateZ(180deg);
+    }
 
-  &::after {
-    right: 0;
-    top: 0;
-    transform: rotateZ(180deg);
-  }
-
-  &::before {
-    left: 0;
-    top: 0;
+    &::before {
+      left: 0;
+      top: 0;
+    }
   }
 
   .slide-track {
