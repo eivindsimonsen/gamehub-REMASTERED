@@ -27,10 +27,10 @@ function HeaderNav() {
         </Link>
         <ul className="desktop-nav">
           <div role="list">
-            <li>
+            <li role="listitem">
               <NavLink to="/games">Games</NavLink>
             </li>
-            <li>
+            <li role="listitem">
               <NavLink to="/sell">Sell game</NavLink>
             </li>
           </div>
@@ -43,7 +43,9 @@ function HeaderNav() {
             />
           </div>
           <li>
-            <NavLink to="/cart">
+            <NavLink
+              aria-label="shopping cart"
+              to="/cart">
               <i className="fa-solid fa-cart-shopping"></i>
             </NavLink>
           </li>
