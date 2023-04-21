@@ -1,5 +1,7 @@
 // hooks
 import { useState } from "react";
+// components
+import PopularCard from "./PopularCard";
 // images
 import image from "../../../assets/igor-karimov-9AmKnNZw3GA-unsplash.jpg";
 import product1 from "../../../assets/GameHub_covers.jpg";
@@ -43,8 +45,8 @@ function Home() {
           <h1>
             <span className="sp1">The</span>
             <span className="sp2"> Universe</span>
-            <span className="sp3"> of</span>
-            <span className="sp4"> Games</span>
+            <span className="sp1"> of</span>
+            <span className="sp2"> Games</span>
           </h1>
         </div>
       </section>
@@ -52,42 +54,13 @@ function Home() {
         <h2>Popular games</h2>
         <hr />
         <div className="popular-card-container">
-          <div className="popular-card">
-            <img
-              src={product1}
-              alt=""
-            />
-            <div>
-              <h3>Ping pong</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel consequuntur dolorem nemo eius saepe debitis, at nihil repudiandae, suscipit animi sunt? Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est. Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est.</p>
-              <button className="cta cta-primary">Read more</button>
-            </div>
-          </div>
-          <div className="popular-card">
-            <img
-              src={product2}
-              alt=""
-            />
-            <div>
-              <h3>Super duper</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel consequuntur dolorem nemo eius saepe debitis, at nihil repudiandae, suscipit animi sunt? Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est.</p>
-              <button className="cta cta-primary">Read more</button>
-            </div>
-          </div>
-          <div className="popular-card">
-            <img
-              src={product3}
-              alt=""
-            />
-            <div>
-              <h3>Black</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel consequuntur dolorem nemo eius saepe debitis, at nihil repudiandae, suscipit animi sunt? Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est.</p>
-              <button className="cta cta-primary">Read more</button>
-            </div>
-          </div>
+          <PopularCard />
         </div>
       </section>
-      <section className="deals"></section>
+      <section className="deals container">
+        <h2>Limited deals</h2>
+        <hr />
+      </section>
       <section className="reviews"></section>
     </>
   );

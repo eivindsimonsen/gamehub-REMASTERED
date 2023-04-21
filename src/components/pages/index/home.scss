@@ -42,14 +42,6 @@
       color: $AccentColor;
       text-shadow: 3px 1px 9px #eb6649;
     }
-    & .sp3 {
-      color: $PrimaryColor;
-      text-shadow: 3px 1px 9px #473db0;
-    }
-    & .sp4 {
-      color: $AccentColor;
-      text-shadow: 3px 1px 9px #eb6649;
-    }
   }
 }
 
@@ -119,10 +111,6 @@ $animationSpeed: 40s;
 }
 
 .popular {
-  h2 {
-    color: $PrimaryColor;
-  }
-
   h3 {
     color: $Alabaster;
   }
@@ -149,7 +137,7 @@ $animationSpeed: 40s;
     }
 
     & > div {
-      padding: 10px 20px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
 
@@ -160,7 +148,7 @@ $animationSpeed: 40s;
       & p {
         // adds three dots at overflow
         overflow: hidden;
-        -webkit-line-clamp: 5;
+        -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         display: -webkit-box;
       }
