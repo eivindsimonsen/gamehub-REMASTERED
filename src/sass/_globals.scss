@@ -4,8 +4,15 @@ body {
   background-color: $Alabaster;
 }
 
-a {
+a,
+h2,
+h3 {
   font-family: "Poppins", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+p {
+  line-height: 1.7;
+  color: $LightGray;
 }
 
 // Ensures the footer stays at the bottom
@@ -25,7 +32,28 @@ footer {
 
 // Add this to components with fixed widths
 .container {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0px auto;
-  padding: 0px 10px;
+  padding: 50px 10px;
+}
+
+.cta {
+  font-family: "Poppins";
+  font-weight: 500;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 2px;
+
+  &-primary {
+    background-color: $DamnGoodPurple;
+    color: $Alabaster;
+    transition: 0.15s linear;
+
+    &:hover {
+      cursor: pointer;
+      color: $DamnGoodPurple;
+      background-color: $Magnolia;
+      transition: 0.15s linear;
+    }
+  }
 }

@@ -117,3 +117,53 @@ $animationSpeed: 40s;
     }
   }
 }
+
+.popular {
+  h2 {
+    color: $PrimaryColor;
+  }
+
+  h3 {
+    color: $Alabaster;
+  }
+
+  & img {
+    width: 100%;
+
+    @media (min-width: 700px) {
+      width: 250px;
+    }
+  }
+
+  &-card {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin: 35px 0px;
+    background-color: $PrimaryColor;
+    font-weight: 400;
+
+    @media (min-width: 700px) {
+      flex-direction: row;
+      height: 300px;
+    }
+
+    & > div {
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: column;
+
+      & button {
+        align-self: end;
+      }
+
+      & p {
+        // adds three dots at overflow
+        overflow: hidden;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+      }
+    }
+  }
+}
