@@ -9,6 +9,7 @@ nav {
   }
 }
 
+// header-nav
 .brand-logo {
   display: flex;
   & img {
@@ -278,4 +279,51 @@ nav {
 
 .fa-cart-shopping {
   font-size: 1.5rem;
+}
+
+// footer-nav
+.footer-nav {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+
+  .active-styles {
+    content: "";
+    border: 2px solid $AccentColor;
+    display: flex;
+    position: absolute;
+    width: 97%;
+  }
+
+  & a {
+    position: relative;
+    &:hover {
+      cursor: pointer;
+      &::after {
+        @extend .active-styles;
+        bottom: -32px;
+      }
+    }
+
+    &.active {
+      color: $Alabaster;
+      &::after {
+        @extend .active-styles;
+        bottom: -32px;
+      }
+    }
+  }
+
+  & .fa-twitter,
+  .fa-instagram,
+  .fa-youtube {
+    color: $Alabaster;
+    margin: 0px 10px;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+
+    &:hover {
+      cursor: pointer;
+      color: $AccentColor;
+    }
+  }
 }
