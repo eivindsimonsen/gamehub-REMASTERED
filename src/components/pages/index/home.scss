@@ -1,7 +1,22 @@
 .home-intro {
-  display: none;
+  display: flex;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
   margin: 50px;
   gap: 50px;
+
+  @media (min-width: 835px) {
+    flex-direction: row;
+  }
+
+  & img {
+    width: clamp(200px, 5vw, 1000px);
+    flex-basis: 50%;
+  }
+
+  & h1 {
+    flex-basis: 50%;
+    font-size: clamp(1rem, 5vw, 5rem);
+  }
 }
