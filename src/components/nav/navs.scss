@@ -1,5 +1,6 @@
 nav {
-  background-color: $PrimaryColor;
+  background: rgb(28, 33, 58);
+  background: linear-gradient(75deg, rgba(28, 33, 58, 1) 0%, rgba(71, 61, 176, 1) 50%, rgba(28, 33, 58, 1) 100%);
 
   & a {
     color: $Alabaster;
@@ -207,6 +208,7 @@ nav {
   justify-content: space-between;
   animation: nav-slide 0.3s ease-in-out forwards;
   text-align: right;
+  z-index: 2;
 
   & > * {
     margin: 15px;
@@ -241,7 +243,7 @@ nav {
     }
 
     & button {
-      color: $Error;
+      color: $AccentColor;
       background-color: transparent;
       border: none;
       font-family: "Poppins", sans-serif;
