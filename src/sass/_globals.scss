@@ -16,7 +16,6 @@ h2 {
 
 p {
   line-height: 1.7;
-  color: $LightGray;
 }
 
 // Ensures the footer stays at the bottom
@@ -32,6 +31,7 @@ main {
 
 footer {
   margin-top: auto;
+  padding-top: 150px;
 }
 
 // Add this to components with fixed widths
@@ -45,19 +45,35 @@ footer {
   font-family: "Poppins";
   font-weight: 500;
   border: none;
-  padding: 12px 20px;
   border-radius: 2px;
+  transition: 0.15s linear;
+
+  &:hover {
+    transition: 0.15s linear;
+  }
 
   &-primary {
+    padding: 12px 20px;
     background-color: $DamnGoodPurple;
     color: $Alabaster;
-    transition: 0.15s linear;
 
     &:hover {
       cursor: pointer;
       color: $DamnGoodPurple;
       background-color: $Magnolia;
-      transition: 0.15s linear;
+    }
+  }
+
+  &-alt {
+    padding: 8px 20px;
+    background-color: $Magnolia;
+    border: 2px solid $DamnGoodPurple;
+    color: $DamnGoodPurple;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $DamnGoodPurple;
+      color: $Magnolia;
     }
   }
 }

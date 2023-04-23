@@ -2,6 +2,7 @@
 import { useState } from "react";
 // components
 import PopularCard from "./PopularCard";
+import Reviews from "./Reviews";
 // images
 import image from "../../../assets/igor-karimov-9AmKnNZw3GA-unsplash.jpg";
 import product1 from "../../../assets/GameHub_covers.jpg";
@@ -14,6 +15,7 @@ import product7 from "../../../assets/GameHub_covers7.jpg";
 import product8 from "../../../assets/GameHub_covers8.jpg";
 import product9 from "../../../assets/GameHub_covers9.jpg";
 import product10 from "../../../assets/GameHub_covers10.jpg";
+import PostReview from "./PostReview";
 
 function Home() {
   const [images] = useState([product1, product2, product3, product4, product5, product6, product7, product8, product9, product10]);
@@ -51,17 +53,28 @@ function Home() {
         </div>
       </section>
       <section className="popular container">
-        <h2>Popular games</h2>
+        <h2>Popular Games</h2>
         <hr />
         <div className="popular-card-container">
           <PopularCard />
         </div>
       </section>
       <section className="deals container">
-        <h2>Limited deals</h2>
+        <h2>Limited Deals</h2>
         <hr />
+        <div>
+          <PopularCard discount="3000" />
+        </div>
       </section>
-      <section className="reviews"></section>
+      <section className="reviews container">
+        <h2>Site Reviews</h2>
+        <hr />
+        <div>
+          <Reviews />
+          <Reviews />
+          <PostReview />
+        </div>
+      </section>
     </>
   );
 }
