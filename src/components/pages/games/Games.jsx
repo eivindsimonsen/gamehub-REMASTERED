@@ -1,7 +1,5 @@
-import React from "react";
-
 function Games() {
-  return <div>Games</div>;
+  return <div className="bg">Games</div>;
 }
 
 export default Games;
