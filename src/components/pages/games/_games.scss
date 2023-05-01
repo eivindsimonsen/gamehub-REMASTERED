@@ -104,6 +104,9 @@
 
         @media (max-width: 800px) {
           background-color: $SecondaryColorTransparent;
+        }
+
+        @media (min-width: 800px) {
           bottom: 0;
         }
       }
