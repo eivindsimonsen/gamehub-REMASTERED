@@ -1,8 +1,111 @@
 // Message to future Eivind, the /src/ in the below string is crucial for fetching the images
-.bg {
+/* .bg {
   background-image: url("../../../src/assets/Fifa.jpg");
   height: 90vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+} */
+
+.games {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 800px) {
+    flex-direction: row;
+  }
+
+  &-filter {
+    flex-basis: 20%;
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      position: sticky;
+      top: 20px;
+      font-size: 1.5rem;
+      padding: 0;
+
+      & li {
+        background-color: $LightGray;
+        color: $PrimaryColor;
+        margin: 15px 25px;
+        padding: 10px;
+        text-align: center;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $DamnGoodPurple;
+          color: $Alabaster;
+        }
+
+        &.active {
+          background-color: $DamnGoodPurple;
+          color: $Alabaster;
+        }
+      }
+    }
+  }
+
+  &-container {
+    flex-basis: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: flex-end;
+
+    & img {
+      max-width: 280px;
+      height: 100%;
+    }
+
+    &-content {
+      width: min-content;
+      position: relative;
+
+      & p,
+      s {
+        overflow: hidden;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        transform: translateY(340px);
+        transition: 0.5s ease-in-out;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      s {
+        color: $AccentColor;
+      }
+
+      &-hidden {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        overflow: hidden;
+        transition: 0.5s ease-in-out;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        p,
+        s {
+          transform: translateY(0px);
+          transition: 0.5s ease-in-out;
+        }
+
+        .games-container-content-hidden {
+          background-color: $SecondaryColorTransparent;
+          transition: 0.5s ease-in-out;
+        }
+      }
+    }
+  }
 }

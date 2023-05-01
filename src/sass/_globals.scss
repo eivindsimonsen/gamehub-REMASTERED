@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: "Roboto", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  background-color: $Alabaster;
+  background-color: $Magnolia;
 }
 
 a,
@@ -16,6 +16,7 @@ h2 {
 
 p {
   line-height: 1.7;
+  color: $Alabaster;
 }
 
 // Ensures the footer stays at the bottom
@@ -39,6 +40,11 @@ footer {
   max-width: 800px;
   margin: 0px auto;
   padding: 50px 10px;
+}
+
+.container--big {
+  @extend .container;
+  max-width: 1200px;
 }
 
 .cta {
@@ -73,7 +79,7 @@ footer {
     &:hover {
       cursor: pointer;
       background-color: $DamnGoodPurple;
-      color: $Magnolia;
+      color: $Alabaster;
     }
   }
 }

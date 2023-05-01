@@ -127,52 +127,52 @@ $animationSpeed: 40s;
       width: 250px;
     }
   }
+}
 
-  &-card {
+.card {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin: 35px 0px;
+  background-color: $PrimaryColor;
+  font-weight: 400;
+
+  @media (min-width: 700px) {
+    flex-direction: row;
+    height: 300px;
+  }
+
+  & > div {
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    height: auto;
-    margin: 35px 0px;
-    background-color: $PrimaryColor;
-    font-weight: 400;
 
-    @media (min-width: 700px) {
-      flex-direction: row;
-      height: 300px;
+    & button {
+      align-self: end;
     }
 
-    & > div {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
+    & p {
+      // adds three dots at overflow
+      overflow: hidden;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+    }
+  }
 
-      & button {
-        align-self: end;
-      }
+  &-title-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
 
-      & p {
-        // adds three dots at overflow
-        overflow: hidden;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        display: -webkit-box;
-      }
+    & s {
+      color: #eb6649;
     }
 
-    &-title-price {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: space-between;
-
-      & s {
-        color: #eb6649;
-      }
-
-      & strong,
-      span {
-        color: $Alabaster;
-      }
+    & strong,
+    span {
+      color: $Alabaster;
     }
   }
 }
@@ -185,6 +185,10 @@ $animationSpeed: 40s;
     padding: 20px;
     gap: 20px;
     margin: 20px 0px;
+
+    & p {
+      color: $PrimaryColor;
+    }
 
     & img {
       width: 50px;

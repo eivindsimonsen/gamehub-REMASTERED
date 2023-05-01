@@ -2,6 +2,7 @@
 import { useState } from "react";
 // components
 import PopularCard from "./PopularCard";
+import SalesCard from "./SalesCard";
 import Reviews from "./Reviews";
 // images
 import image from "../../../assets/igor-karimov-9AmKnNZw3GA-unsplash.jpg";
@@ -19,7 +20,6 @@ import PostReview from "./PostReview";
 
 function Home() {
   const [images] = useState([product1, product2, product3, product4, product5, product6, product7, product8, product9, product10]);
-  console.log(images);
 
   return (
     <>
@@ -55,15 +55,15 @@ function Home() {
       <section className="popular container">
         <h2>Popular Games</h2>
         <hr />
-        <div className="popular-card-container">
+        <div className="card-container">
           <PopularCard />
         </div>
       </section>
       <section className="deals container">
         <h2>Limited Deals</h2>
         <hr />
-        <div>
-          <PopularCard discount="3000" />
+        <div className="card-container">
+          <SalesCard />
         </div>
       </section>
       <section className="reviews container">
