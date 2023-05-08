@@ -1,0 +1,54 @@
+.cart-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fa-trash-can {
+  color: $AccentColor;
+}
+
+#cart {
+  position: absolute;
+  z-index: 3;
+  top: 40px;
+  background-color: $LightBlueBg;
+  padding: 15px;
+  border-radius: 5px;
+  width: 400px;
+
+  & button {
+    width: 100%;
+  }
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $DamnGoodPurple;
+  margin-bottom: 10px;
+
+  & img {
+    width: 80px;
+    object-fit: scale-down;
+    margin-bottom: 10px;
+  }
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  &-texts {
+    p {
+      color: $DamnGoodPurple;
+      margin: 5px 10px;
+
+      &:first-of-type {
+        font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+      }
+    }
+  }
+}

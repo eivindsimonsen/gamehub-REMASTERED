@@ -5,6 +5,8 @@ import { NavLink, Link } from "react-router-dom";
 // images
 import logoImage from "../../assets/GameHub_Logo.png";
 import profile from "../../assets/profile-image.jpg";
+// components
+import Cart from "../cart/Cart";
 
 function HeaderNav() {
   // states
@@ -42,12 +44,8 @@ function HeaderNav() {
               autoFocus
             />
           </div>
-          <li>
-            <NavLink
-              aria-label="shopping cart"
-              to="/cart">
-              <i className="fa-solid fa-cart-shopping"></i>
-            </NavLink>
+          <li className="cart-container">
+            <Cart />
           </li>
           <li>
             <NavLink to="/login">Log in</NavLink>
@@ -70,6 +68,9 @@ function HeaderNav() {
               autoFocus
             />
           </div>
+          <li className="cart-container">
+            <Cart />
+          </li>
           <i
             onClick={showMenu}
             className="fa-solid fa-bars"></i>
