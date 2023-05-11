@@ -51,7 +51,7 @@ function HeaderNav() {
             <NavLink to="/login">Log in</NavLink>
           </li>
           <li className="profile-image">
-            <NavLink to="/user">
+            <NavLink to="/dashboard">
               <img
                 src={profile}
                 alt="User"

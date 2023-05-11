@@ -10,7 +10,6 @@ import Games from "./components/pages/games/Games";
 import Sell from "./components/pages/sell/Sell";
 import Login from "./components/pages/login/Login";
 import NotFound from "./components/pages/notfound/NotFound";
-import Contact from "./components/pages/contact/Contact";
 
 function App() {
   return (
@@ -37,8 +36,8 @@ function App() {
             element={<Login />}
           />
           <Route
-            path="/contact"
-            element={<Contact />}
+            path="/dashboard"
+            element={<Login />}
           />
           <Route
             path="/*"
