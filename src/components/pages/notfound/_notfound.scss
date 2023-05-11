@@ -1,0 +1,9 @@
+.not-found-msg {
+  color: $DamnGoodPurple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  padding: 10px;
+}
