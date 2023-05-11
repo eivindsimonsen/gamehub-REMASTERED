@@ -4,10 +4,14 @@
   background-color: $Magnolia;
   z-index: 1;
   display: grid;
-  grid-template-columns: 35% 1fr;
-  grid-template-rows: 100vh;
+  grid-template-rows: 1fr 1fr;
   place-content: center;
   place-items: center;
+
+  @media (min-width: 800px) {
+    grid-template-columns: 35% 1fr;
+    grid-template-rows: 100vh;
+  }
 }
 
 .left-side,
@@ -21,6 +25,14 @@
 
 .left-side {
   background-color: $DamnGoodPurple;
+  color: $Alabaster;
+  font-size: clamp(1.5rem, 5vw, 1.9rem);
+  padding: 0px 50px;
+  text-align: center;
+
+  @media (min-width: 1365px) {
+    padding: 0px 150px;
+  }
 }
 
 form {
@@ -45,4 +57,16 @@ form {
       border: 2px solid $DamnGoodPurple;
     }
   }
+}
+
+.return-btn {
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  margin: 20px;
+  color: $Alabaster;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 10px;
 }
