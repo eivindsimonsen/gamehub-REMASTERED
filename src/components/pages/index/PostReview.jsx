@@ -8,7 +8,7 @@ function PostReview() {
   };
 
   return (
-    <form>
+    <form className="home-form">
       <textarea
         name="message"
         id=""

@@ -206,6 +206,10 @@ $animationSpeed: 40s;
     flex-direction: column;
     gap: 20px;
 
+    &.home-form {
+      max-width: none;
+    }
+
     & textarea {
       border-radius: 5px;
       padding: 10px;
