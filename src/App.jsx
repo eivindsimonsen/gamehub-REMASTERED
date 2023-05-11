@@ -10,6 +10,7 @@ import Games from "./components/pages/games/Games";
 import Sell from "./components/pages/sell/Sell";
 import Login from "./components/pages/login/Login";
 import NotFound from "./components/pages/notfound/NotFound";
+import Dashboard from "./components/pages/dashboard/Dashboard";
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
           />
           <Route
             path="/dashboard"
-            element={<Login />}
+            element={<Dashboard />}
           />
           <Route
             path="/*"
