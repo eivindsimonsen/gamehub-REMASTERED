@@ -1,0 +1,17 @@
+.sell {
+  &-logged-out {
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+    align-items: center;
+    gap: 20px;
+
+    h1 {
+      color: $PrimaryColor;
+    }
+
+    & .purple-span {
+      color: $DamnGoodPurple;
+    }
+  }
+}
