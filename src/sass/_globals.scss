@@ -24,6 +24,10 @@ p {
   color: $Alabaster;
 }
 
+a {
+  text-decoration: none;
+}
+
 // Ensures the footer stays at the bottom
 #root {
   display: flex;
