@@ -5,15 +5,21 @@ function Dashboard() {
     <section id="dashboard">
       <aside>
         <ul>
-          <li>Your account</li>
-          <li>Listed games</li>
-          <li>App settings</li>
+          <li>
+            <i className="fa-solid fa-user"></i> <span>Your account</span>
+          </li>
+          <li>
+            <i className="fa-solid fa-list"></i> <span>Listed games</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-gear"></i> <span>App settings</span>
+          </li>
         </ul>
       </aside>
       <section className="dashboard-container">
-        <section>Your account</section>
-        <section>Listed games</section>
-        <section>App settings</section>
+        <div>Your account</div>
+        <div>Listed games</div>
+        <div>App settings</div>
       </section>
     </section>
   );
