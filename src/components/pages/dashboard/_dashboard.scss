@@ -4,13 +4,14 @@
 
   & ul {
     background-color: $LightGray;
-    color: $PrimaryColor;
+    color: $CoolGray;
     list-style-type: none;
     margin: 0px;
     padding: 10px 25px;
     height: 100%;
     cursor: pointer;
     overflow: hidden;
+    font-weight: 500;
 
     & span {
       // display: none;
@@ -22,11 +23,14 @@
 
     &:hover {
       span {
-        // display: flex;
         transition: 3s;
         width: 100px;
         transition: width 500ms, color 500ms;
-        color: $PrimaryColor;
+        color: $CoolGray;
+      }
+
+      & > #dashboard-active span {
+        color: $DamnGoodPurple;
       }
     }
 
@@ -63,4 +67,8 @@
 .dashboard-container {
   flex-basis: 100%;
   margin: 30px;
+}
+
+#dashboard-active > * {
+  color: $DamnGoodPurple;
 }
