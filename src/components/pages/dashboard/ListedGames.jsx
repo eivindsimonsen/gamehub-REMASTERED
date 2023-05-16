@@ -1,7 +1,13 @@
 import React from "react";
 
 function ListedGames() {
-  return <div>ListedGames</div>;
+  return (
+    <>
+      <section id="listed-games">
+        <h1>Your listed games</h1>
+      </section>
+    </>
+  );
 }
 
 export default ListedGames;
