@@ -72,3 +72,15 @@
 #dashboard-active > * {
   color: $DamnGoodPurple;
 }
+
+#listed-games,
+#settings,
+#your-account {
+  h1 {
+    background-color: $DamnGoodPurple;
+    padding: 20px;
+    color: $Alabaster;
+    font-weight: 400;
+    text-align: center;
+  }
+}
