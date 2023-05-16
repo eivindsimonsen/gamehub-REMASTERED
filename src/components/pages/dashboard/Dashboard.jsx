@@ -27,7 +27,7 @@ function Dashboard() {
           <li
             id={selectedDashboard === 2 && "dashboard-active"}
             onClick={() => setSelectedDashboard(2)}>
-            <i class="fa-solid fa-gear"></i>
+            <i className="fa-solid fa-gear"></i>
             <span>App settings</span>
           </li>
         </ul>
