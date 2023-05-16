@@ -1,7 +1,13 @@
 import React from "react";
 
 function AppSettings() {
-  return <div>AppSettings</div>;
+  return (
+    <>
+      <section id="settings">
+        <h1>App settings</h1>
+      </section>
+    </>
+  );
 }
 
 export default AppSettings;
