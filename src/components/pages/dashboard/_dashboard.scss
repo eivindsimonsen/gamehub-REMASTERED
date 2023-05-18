@@ -1,6 +1,6 @@
 #dashboard {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 
   & ul {
     background-color: $LightGray;
@@ -89,6 +89,7 @@
   }
 }
 
+// Your account section
 .your-account-content {
   & figure {
     margin: 0;
@@ -135,6 +136,7 @@
 
     & i {
       color: $DamnGoodPurple;
+      cursor: pointer;
     }
 
     & span {
@@ -147,3 +149,28 @@
     -moz-text-security: disc;
   }
 }
+
+// Listed games section
+.listed-games-content {
+  img {
+    width: 150px;
+  }
+
+  figure {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $LightGray;
+    border-bottom: 3px solid $DamnGoodPurple;
+    margin: 20px 100px;
+
+    p,
+    figcaption {
+      color: $DamnGoodPurple;
+      font-weight: 500;
+      padding: 0px 20px;
+      margin: 0px;
+    }
+  }
+}
+// settings section
