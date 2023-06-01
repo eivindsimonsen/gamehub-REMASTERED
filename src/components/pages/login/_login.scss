@@ -40,7 +40,7 @@ form {
   flex-direction: column;
   gap: 25px;
   max-width: 600px;
-  padding: 10px;
+  padding: 15px 0px;
 
   & input {
     padding: 15px;
@@ -57,6 +57,14 @@ form {
       border: 2px solid $DamnGoodPurple;
     }
   }
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 530px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .return-btn {
