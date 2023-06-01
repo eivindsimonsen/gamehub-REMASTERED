@@ -23,57 +23,60 @@ function Login() {
       </NavLink>
       <section id="login">
         <h1 className="left-side">Login with Google, or create a new account</h1>
-        {createUser ? (
-          <form className="right-side login-form">
-            <input
-              type="text"
-              placeholder="Username"
-            />
-            <input
-              type="text"
-              placeholder="Username/email"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-            />
-            <button
-              type="submit"
-              className="cta cta-primary">
-              Create user
-            </button>
+        <div className="login-form-container">
+          {createUser ? (
+            <form className="right-side login-form">
+              <input
+                type="text"
+                placeholder="Username"
+              />
+              <input
+                type="text"
+                placeholder="Username/email"
+              />
+              <input
+                type="password"
+                placeholder="Password"
+              />
+              <button
+                type="submit"
+                className="cta cta-primary">
+                Create user
+              </button>
+            </form>
+          ) : (
+            <form className="right-side login-form">
+              <input
+                type="text"
+                placeholder="Username/email"
+              />
+              <input
+                type="password"
+                placeholder="Password"
+              />
+              <button
+                type="submit"
+                className="cta cta-primary">
+                Login
+              </button>
+            </form>
+          )}
+          {createUser ? (
             <button
               type="button"
               onClick={toggleForm}
               className="cta cta-alt">
-              I have a user
+              Oh, wait I have a user
             </button>
-          </form>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="right-side login-form">
-            <input
-              type="text"
-              placeholder="Username/email"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-            />
-            <button
-              type="submit"
-              className="cta cta-primary">
-              Login
-            </button>
+          ) : (
             <button
               type="button"
               onClick={toggleForm}
               className="cta cta-alt">
               Create a user
             </button>
-          </form>
-        )}
+          )}
+        </div>
       </section>
     </>
   );
