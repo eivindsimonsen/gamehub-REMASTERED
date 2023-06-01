@@ -1,6 +1,18 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Login() {
+  const [createUser, setCreateUser] = useState(false);
+
+  const toggleForm = () => {
+    setCreateUser(!createUser);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted");
+  };
+
   return (
     <>
       <NavLink
@@ -11,18 +23,57 @@ function Login() {
       </NavLink>
       <section id="login">
         <h1 className="left-side">Login with Google, or create a new account</h1>
-        <form className="right-side login-form">
-          <input
-            type="text"
-            placeholder="Username/email"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-          />
-          <button className="cta cta-primary">Login</button>
-          <button className="cta cta-alt">Create a user</button>
-        </form>
+        {createUser ? (
+          <form className="right-side login-form">
+            <input
+              type="text"
+              placeholder="Username"
+            />
+            <input
+              type="text"
+              placeholder="Username/email"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+            />
+            <button
+              type="submit"
+              className="cta cta-primary">
+              Create user
+            </button>
+            <button
+              type="button"
+              onClick={toggleForm}
+              className="cta cta-alt">
+              I have a user
+            </button>
+          </form>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="right-side login-form">
+            <input
+              type="text"
+              placeholder="Username/email"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+            />
+            <button
+              type="submit"
+              className="cta cta-primary">
+              Login
+            </button>
+            <button
+              type="button"
+              onClick={toggleForm}
+              className="cta cta-alt">
+              Create a user
+            </button>
+          </form>
+        )}
       </section>
     </>
   );
