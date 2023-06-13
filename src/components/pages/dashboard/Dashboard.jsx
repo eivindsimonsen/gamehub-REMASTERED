@@ -4,8 +4,11 @@ import { useState } from "react";
 import YourAccount from "./YourAccount";
 import ListedGames from "./ListedGames";
 import AppSettings from "./AppSettings";
+// context
+import { UserAuth } from "../../../context/AuthContext";
 
 function Dashboard() {
+  const { user } = UserAuth();
   const [selectedDashboard, setSelectedDashboard] = useState(0);
 
   return (
@@ -34,7 +37,7 @@ function Dashboard() {
       </aside>
       <section className="dashboard-container">
         <div>
-          {selectedDashboard === 0 && <YourAccount />}
+          {selectedDashboard === 0 && <YourAccount user={user} />}
           {selectedDashboard === 1 && <ListedGames />}
           {selectedDashboard === 2 && <AppSettings />}
         </div>
