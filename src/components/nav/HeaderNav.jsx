@@ -1,19 +1,33 @@
 // hooks
 import { useState } from "react";
 // packages
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 // images
 import logoImage from "../../assets/GameHub_Logo.png";
 import profile from "../../assets/profile-image.jpg";
 // components
 import Cart from "../cart/Cart";
+// context
+import { UserAuth } from "../../context/AuthContext";
 
 function HeaderNav() {
+  const { user, logout } = UserAuth();
   // states
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   const showMenu = () => {
     setShow(!show);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/");
+      console.log("You've logged out");
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 
   return (
@@ -47,16 +61,16 @@ function HeaderNav() {
           <li className="cart-container">
             <Cart />
           </li>
-          <li>
-            <NavLink to="/login">Log in</NavLink>
-          </li>
+          <li>{user ? <button onClick={handleLogout}>logout</button> : <NavLink to="/login">Log in</NavLink>}</li>
           <li className="profile-image">
-            <NavLink to="/dashboard">
-              <img
-                src={profile}
-                alt="User"
-              />
-            </NavLink>
+            {user && (
+              <NavLink to="/dashboard">
+                <img
+                  src={profile}
+                  alt="User"
+                />
+              </NavLink>
+            )}
           </li>
         </ul>
         <ul className="mobile-nav">
@@ -97,29 +111,35 @@ function HeaderNav() {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink
-                        onClick={showMenu}
-                        className="logout"
-                        to="/login">
-                        Login
-                      </NavLink>
+                      {!user && (
+                        <NavLink
+                          onClick={showMenu}
+                          className="logout"
+                          to="/login">
+                          Login
+                        </NavLink>
+                      )}
                     </li>
                   </div>
                   <div className="collapse-nav-user">
-                    <li className="profile-image">
-                      <NavLink
-                        onClick={showMenu}
-                        to="/user">
-                        <img
-                          src={profile}
-                          alt="User"
-                        />
-                      </NavLink>
-                    </li>
-                    <button onClick={() => console.log("You've logged out")}>
-                      Logout
-                      <i className="fa-solid fa-arrow-right-from-bracket"></i>
-                    </button>
+                    {user && (
+                      <>
+                        <li className="profile-image">
+                          <NavLink
+                            onClick={showMenu}
+                            to="/dashboard">
+                            <img
+                              src={profile}
+                              alt="User"
+                            />
+                          </NavLink>
+                        </li>
+                        <button onClick={handleLogout}>
+                          Logout
+                          <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
