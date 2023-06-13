@@ -11,44 +11,55 @@ import Sell from "./components/pages/sell/Sell";
 import Login from "./components/pages/login/Login";
 import NotFound from "./components/pages/notfound/NotFound";
 import Dashboard from "./components/pages/dashboard/Dashboard";
+// context
+import { AuthContextProvider } from "./context/AuthContext";
+// components
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <>
-      <header>
-        <HeaderNav />
-      </header>
-      <main>
-        <Routes>
-          <Route
-            path="/"
-            element={<Home />}
-          />
-          <Route
-            path="/games"
-            element={<Games />}
-          />
-          <Route
-            path="/sell"
-            element={<Sell />}
-          />
-          <Route
-            path="/login"
-            element={<Login />}
-          />
-          <Route
-            path="/dashboard"
-            element={<Dashboard />}
-          />
-          <Route
-            path="/*"
-            element={<NotFound />}
-          />
-        </Routes>
-      </main>
-      <footer>
-        <FooterNav />
-      </footer>
+      <AuthContextProvider>
+        <header>
+          <HeaderNav />
+        </header>
+        <main>
+          <Routes>
+            <Route
+              path="/"
+              element={<Home />}
+            />
+            <Route
+              path="/games"
+              element={<Games />}
+            />
+            <Route
+              path="/sell"
+              element={<Sell />}
+            />
+            <Route
+              path="/login"
+              element={<Login />}
+            />
+
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/*"
+              element={<NotFound />}
+            />
+          </Routes>
+        </main>
+        <footer>
+          <FooterNav />
+        </footer>
+      </AuthContextProvider>
     </>
   );
 }
