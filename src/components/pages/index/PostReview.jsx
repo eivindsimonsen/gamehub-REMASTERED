@@ -16,7 +16,9 @@ function PostReview() {
         placeholder="What do you think of this website?"></textarea>
       <div>
         {[1, 2, 3, 4, 5].map((value) => (
-          <label key={value}>
+          <label
+            className="rating-review"
+            key={value}>
             <input
               type="radio"
               value={value}
