@@ -16,19 +16,19 @@ function Dashboard() {
       <aside>
         <ul>
           <li
-            id={selectedDashboard === 0 && "dashboard-active"}
+            id={selectedDashboard === 0 ? "dashboard-active" : "false"}
             onClick={() => setSelectedDashboard(0)}>
             <i className="fa-solid fa-user"></i>
             <span>Your account</span>
           </li>
           <li
-            id={selectedDashboard === 1 && "dashboard-active"}
+            id={selectedDashboard === 1 ? "dashboard-active" : "false"}
             onClick={() => setSelectedDashboard(1)}>
             <i className="fa-solid fa-list"></i>
             <span>Listed games</span>
           </li>
           <li
-            id={selectedDashboard === 2 && "dashboard-active"}
+            id={selectedDashboard === 2 ? "dashboard-active" : "false"}
             onClick={() => setSelectedDashboard(2)}>
             <i className="fa-solid fa-gear"></i>
             <span>App settings</span>
