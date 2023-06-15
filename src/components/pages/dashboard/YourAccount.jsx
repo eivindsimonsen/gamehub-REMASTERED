@@ -1,6 +1,3 @@
-// images
-import image from "../../../assets/profile-image.jpg";
-
 function YourAccount(props) {
   const { user } = props;
   console.log(user);
@@ -14,7 +11,7 @@ function YourAccount(props) {
             <figure>
               {!user.photoUrl ? (
                 <img
-                  src={image}
+                  src="https://loremflickr.com/640/640"
                   alt="Profile id"
                 />
               ) : (
