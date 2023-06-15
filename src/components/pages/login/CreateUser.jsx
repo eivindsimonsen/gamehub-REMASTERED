@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { UserAuth } from "../../../context/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../../firebase";
 
 function CreateUser() {
   const [username, setUsername] = useState("");
@@ -21,6 +23,12 @@ function CreateUser() {
     setError("");
     try {
       await createUser(email, password);
+
+      updateProfile(auth.currentUser, {
+        displayName: username,
+        photoURL: "https://loremflickr.com/640/640",
+      });
+
       const currentPath = location.pathname;
       if (currentPath.includes("/sell")) {
         navigate("/sell");
