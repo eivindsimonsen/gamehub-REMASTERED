@@ -9,17 +9,11 @@ function YourAccount(props) {
         {user && (
           <section className="your-account-content container">
             <figure>
-              {!user.photoUrl ? (
-                <img
-                  src="https://loremflickr.com/640/640"
-                  alt="Profile id"
-                />
-              ) : (
-                <img
-                  src={user.photoUrl}
-                  alt="Profile id"
-                />
-              )}
+              <img
+                src={user.photoURL}
+                alt="Profile id"
+              />
+
               <span>change</span>
             </figure>
             <div>

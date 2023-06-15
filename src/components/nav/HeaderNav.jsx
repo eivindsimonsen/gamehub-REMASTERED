@@ -75,17 +75,10 @@ function HeaderNav() {
           <li className="profile-image">
             {user && (
               <NavLink to="/dashboard">
-                {!user.photoUrl ? (
-                  <img
-                    src="https://loremflickr.com/640/640"
-                    alt="Profile id"
-                  />
-                ) : (
-                  <img
-                    src={user.photoUrl}
-                    alt="Profile id"
-                  />
-                )}
+                <img
+                  src={user.photoURL}
+                  alt="Profile id"
+                />
               </NavLink>
             )}
           </li>
