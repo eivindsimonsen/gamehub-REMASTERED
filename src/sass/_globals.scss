@@ -90,4 +90,25 @@ footer {
       color: $Alabaster;
     }
   }
+
+  &-red {
+    cursor: pointer;
+    background-color: $AccentColor;
+    color: $Alabaster;
+    padding: 8px 12px;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+
+    & .fa-arrow-right-from-bracket {
+      transition: 200ms;
+      transform: translateX(0px);
+    }
+
+    &:hover .fa-arrow-right-from-bracket {
+      transform: translateX(3px);
+      transition: 200ms;
+    }
+  }
 }
