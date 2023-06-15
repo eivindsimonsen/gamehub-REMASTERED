@@ -1,15 +1,16 @@
 import { useState } from "react";
 import Login from "./../login/Login";
 import SellCard from "./SellCard";
+import { UserAuth } from "../../../context/AuthContext";
 
 function Sell() {
-  const [user] = useState(true);
+  const { user } = UserAuth();
 
   return (
     <section id="sell">
       {user ? (
         <div className="container">
-          <h1>Games you own: </h1>
+          <h1 className="sell-logged-in-title">Games you own: </h1>
           <div>
             <SellCard />
           </div>
