@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { UserAuth } from "../../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function CreateUser() {
   const [username, setUsername] = useState("");
@@ -10,6 +10,7 @@ function CreateUser() {
   const [error, setError] = useState("");
   const { createUser } = UserAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleEye = () => {
     setShowPassword(!showPassword);
@@ -20,7 +21,12 @@ function CreateUser() {
     setError("");
     try {
       await createUser(email, password);
-      navigate("/dashboard");
+      const currentPath = location.pathname;
+      if (currentPath.includes("/sell")) {
+        navigate("/sell");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (e) {
       setError(e.message);
       console.log(e.message);
