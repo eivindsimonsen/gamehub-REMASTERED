@@ -3,27 +3,34 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { UserAuth } from "../../../context/AuthContext";
 
 function SignIn() {
+  // states
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  // functions
   const navigate = useNavigate();
   const location = useLocation();
 
   const { signIn } = UserAuth();
 
+  // toggles password visibility
   const toggleEye = () => {
     setShowPassword(!showPassword);
   };
 
+  // what happens when form is submitted
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setError("");
+    setLoading(true);
 
     try {
       await signIn(email, password);
       const currentPath = location.pathname;
+
       if (currentPath.includes("/sell")) {
         navigate("/sell");
       } else {
@@ -32,6 +39,8 @@ function SignIn() {
     } catch (e) {
       setError(e.message);
       console.log(e.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,8 +68,9 @@ function SignIn() {
         </label>
         <button
           type="submit"
-          className="cta cta-primary">
-          Login
+          className="cta cta-primary"
+          disabled={loading}>
+          {loading ? "Loading..." : "Login"}
         </button>
         {error}
       </form>
