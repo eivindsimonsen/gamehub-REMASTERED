@@ -4,14 +4,13 @@ import { useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 // images
 import logoImage from "../../assets/GameHub_Logo.png";
-import profile from "../../assets/profile-image.jpg";
 // components
 import Cart from "../cart/Cart";
 // context
 import { UserAuth } from "../../context/AuthContext";
 
 function HeaderNav() {
-  const { user, logout } = UserAuth();
+  const { user, logout } = UserAuth() || {};
   // states
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
@@ -61,14 +60,32 @@ function HeaderNav() {
           <li className="cart-container">
             <Cart />
           </li>
-          <li>{user ? <button onClick={handleLogout}>logout</button> : <NavLink to="/login">Log in</NavLink>}</li>
+          <li>
+            {user ? (
+              <button
+                className="cta-red"
+                onClick={handleLogout}>
+                Logout
+                <i className="fa-solid fa-arrow-right-from-bracket"></i>
+              </button>
+            ) : (
+              <NavLink to="/login">Log in</NavLink>
+            )}
+          </li>
           <li className="profile-image">
             {user && (
               <NavLink to="/dashboard">
-                <img
-                  src={profile}
-                  alt="User"
-                />
+                {!user.photoUrl ? (
+                  <img
+                    src="https://loremflickr.com/640/640"
+                    alt="Profile id"
+                  />
+                ) : (
+                  <img
+                    src={user.photoUrl}
+                    alt="Profile id"
+                  />
+                )}
               </NavLink>
             )}
           </li>
@@ -128,10 +145,17 @@ function HeaderNav() {
                           <NavLink
                             onClick={showMenu}
                             to="/dashboard">
-                            <img
-                              src={profile}
-                              alt="User"
-                            />
+                            {!user.photoUrl ? (
+                              <img
+                                src="https://loremflickr.com/640/640"
+                                alt="Profile id"
+                              />
+                            ) : (
+                              <img
+                                src={user.photoUrl}
+                                alt="Profile id"
+                              />
+                            )}
                           </NavLink>
                         </li>
                         <button onClick={handleLogout}>
