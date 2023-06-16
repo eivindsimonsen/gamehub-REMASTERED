@@ -32,7 +32,7 @@ function CreateUser() {
       // Makes sure the user account retrieves the username and a photo
       updateProfile(auth.currentUser, {
         displayName: username,
-        photoURL: "https://loremflickr.com/cache/resized/65535_52886923341_9db4d78a42_z_640_640_nofilter.jpg",
+        photoURL: "https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png",
       }).then(() => {
         // redirecting to dashboard or sell page
         const currentPath = location.pathname;
