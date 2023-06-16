@@ -49,13 +49,15 @@ function SignIn() {
       <form
         onSubmit={handleSubmit}
         className="right-side login-form">
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <label>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </label>
         <label>
           <input
             type={showPassword ? "text" : "password"}
