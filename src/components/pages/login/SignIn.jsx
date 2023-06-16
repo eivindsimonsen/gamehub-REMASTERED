@@ -54,6 +54,7 @@ function SignIn() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <label>
           <input
@@ -61,6 +62,7 @@ function SignIn() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <i
             onClick={toggleEye}

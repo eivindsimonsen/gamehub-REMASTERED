@@ -60,12 +60,14 @@ function CreateUser() {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
         <input
           type="email"
-          placeholder="Username/email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <label>
           <input
@@ -73,6 +75,7 @@ function CreateUser() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <i
             onClick={toggleEye}
