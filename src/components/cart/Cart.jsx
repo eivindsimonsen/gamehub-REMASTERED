@@ -16,32 +16,37 @@ function Cart() {
         onClick={showCart}
         className="fa-solid fa-cart-shopping"></i>
       {openCart && (
-        <section id="cart">
-          <div className="cart-item">
-            <img
-              src={image}
-              alt=""
-            />
-            <div className="cart-item-texts">
-              <i className="fa-regular fa-trash-can"></i>
-              <p>Ping pong championship</p>
-              <p>9000 credits</p>
+        <>
+          <div
+            onClick={showCart}
+            className="black-overlay"></div>
+          <section id="cart">
+            <div className="cart-item">
+              <img
+                src={image}
+                alt=""
+              />
+              <div className="cart-item-texts">
+                <i className="fa-regular fa-trash-can"></i>
+                <p>Ping pong championship</p>
+                <p>9000 credits</p>
+              </div>
             </div>
-          </div>
-          <div className="cart-item">
-            <img
-              src={image}
-              alt=""
-            />
-            <div className="cart-item-texts">
-              <i className="fa-regular fa-trash-can"></i>
-              <p>Ping pong championship</p>
-              <p>9000 credits</p>
+            <div className="cart-item">
+              <img
+                src={image}
+                alt=""
+              />
+              <div className="cart-item-texts">
+                <i className="fa-regular fa-trash-can"></i>
+                <p>Ping pong championship</p>
+                <p>9000 credits</p>
+              </div>
             </div>
-          </div>
-          <p>Total: 9000 credits</p>
-          <button className="cta cta-alt">Checkout</button>
-        </section>
+            <p>Total: 9000 credits</p>
+            <button className="cta cta-alt">Checkout</button>
+          </section>
+        </>
       )}
     </>
   );

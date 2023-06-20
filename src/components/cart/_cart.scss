@@ -69,3 +69,12 @@
 .fa-trash-can {
   cursor: pointer;
 }
+
+.black-overlay {
+  background: $SecondaryColor;
+  position: fixed;
+  height: 100vh;
+  inset: 0;
+  opacity: 0.4;
+  z-index: 1;
+}
