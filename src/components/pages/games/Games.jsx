@@ -1,59 +1,112 @@
 // hooks
-import { useState } from "react";
-// images
-import product1 from "../../../assets/GameHub_covers.jpg";
-import product2 from "../../../assets/GameHub_covers2.jpg";
-import product3 from "../../../assets/GameHub_covers3.jpg";
-import product4 from "../../../assets/GameHub_covers4.jpg";
-import product5 from "../../../assets/GameHub_covers5.jpg";
-import product6 from "../../../assets/GameHub_covers6.jpg";
-import product7 from "../../../assets/GameHub_covers7.jpg";
-import product8 from "../../../assets/GameHub_covers8.jpg";
-import product9 from "../../../assets/GameHub_covers9.jpg";
-import product10 from "../../../assets/GameHub_covers10.jpg";
+import { useState, useEffect } from "react";
+// functions
+import { db } from "../../../firebase";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+// components
+import Spinner from "../../common/Spinner";
 
 function Games() {
-  const [images] = useState([product1, product2, product3, product4, product5, product6, product7, product8, product9, product10]);
   const [active, setActive] = useState(0);
+  const [games, setGames] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [showAll, setShowAll] = useState(true);
+  const [showPre, setPre] = useState(false);
+  const [showSales, setSales] = useState(false);
+
+  // read operation
+  useEffect(() => {
+    let q;
+
+    // Determine the query based on the current state values
+    if (showAll) {
+      q = query(collection(db, "games"));
+    } else if (showPre) {
+      q = query(collection(db, "games"), where("released", "==", false));
+    } else if (showSales) {
+      q = query(collection(db, "games"), where("sale", "==", true));
+    }
+
+    if (q) {
+      // Check if the query is defined
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        let gamesArr = [];
+        querySnapshot.forEach((doc) => {
+          gamesArr.push({ ...doc.data(), id: doc.id });
+        });
+        setGames(gamesArr);
+        setIsLoading(false);
+      });
+      return () => unsubscribe();
+    }
+  }, [showAll, showPre, showSales]);
+
+  console.log(games);
 
   return (
-    <section className="games container--big">
-      <aside className="games-filter">
-        <ul>
-          <li
-            onClick={() => setActive(0)}
-            className={active === 0 ? "active" : ""}>
-            All games
-          </li>
-          <li
-            onClick={() => setActive(1)}
-            className={active === 1 ? "active" : ""}>
-            Pre-order
-          </li>
-          <li
-            onClick={() => setActive(2)}
-            className={active === 2 ? "active" : ""}>
-            Sales
-          </li>
-        </ul>
-      </aside>
-      <div className="games-container">
-        {images.map((image, index) => (
-          <div
-            className="games-container-content"
-            key={index}>
-            <img
-              src={image}
-              alt=""
-            />
-            <div className="games-container-content-hidden">
-              <p>Forge legend</p>
-              <s>5600</s> <p>3000 credits</p>
+    <>
+      <section className="games container--big">
+        <aside className="games-filter">
+          <ul>
+            <li
+              onClick={() => {
+                setActive(0);
+                setShowAll(true);
+                setPre(false);
+                setSales(false);
+              }}
+              className={active === 0 ? "active" : ""}>
+              All games
+            </li>
+            <li
+              onClick={() => {
+                setActive(1);
+                setShowAll(false);
+                setPre(true);
+                setSales(false);
+              }}
+              className={active === 1 ? "active" : ""}>
+              Pre-order
+            </li>
+            <li
+              onClick={() => {
+                setActive(2);
+                setShowAll(false);
+                setPre(false);
+                setSales(true);
+              }}
+              className={active === 2 ? "active" : ""}>
+              Sales
+            </li>
+          </ul>
+        </aside>
+        <div className="games-container">
+          {isLoading && <Spinner />}
+          {games.map((game, index) => (
+            <div
+              className="games-container-content"
+              key={index}>
+              <img
+                src={game.image}
+                alt={game.title}
+              />
+              <div className="games-container-content-hidden">
+                <p>{game.title}</p>
+                {game.sale ? (
+                  <>
+                    <s>{game.price}</s> <p>{game.price - game.discount} credits</p>
+                  </>
+                ) : (
+                  <>
+                    <p>{game.price} credits</p>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
 
