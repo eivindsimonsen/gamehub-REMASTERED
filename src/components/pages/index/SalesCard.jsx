@@ -1,59 +1,49 @@
-// images
-import product1 from "../../../assets/GameHub_covers.jpg";
-import product2 from "../../../assets/GameHub_covers2.jpg";
-import product3 from "../../../assets/GameHub_covers3.jpg";
+// hooks
+import { useState, useEffect } from "react";
+// functions
+import { db } from "../../../firebase";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 function SalesCard() {
+  const [games, setGames] = useState([]);
+
+  // read operation
+  useEffect(() => {
+    const q = query(collection(db, "games"), where("sale", "==", true));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      let gamesArr = [];
+      querySnapshot.forEach((doc) => {
+        gamesArr.push({ ...doc.data(), id: doc.id });
+      });
+      setGames(gamesArr);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  console.log(games);
+
   return (
     <>
-      <div className="card">
-        <img
-          src={product1}
-          alt=""
-        />
-        <div>
-          <div className="card-title-price">
-            <h3>Ping Pong</h3>
-            <strong>
-              <s>3000</s> <span>1500 credits</span>
-            </strong>
+      {games.map((game, index) => (
+        <div
+          key={index}
+          className="card">
+          <img
+            src={game.image}
+            alt={game.title}
+          />
+          <div>
+            <div className="card-title-price">
+              <h3>{game.title}</h3>
+              <strong>
+                <s>{game.price}</s> <span>{game.price - game.discount} credits</span>
+              </strong>
+            </div>
+            <p>{game.description}</p>
+            <button className="cta cta-primary">Read more</button>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel consequuntur dolorem nemo eius saepe debitis, at nihil repudiandae, suscipit animi sunt? Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est. Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est.</p>
-          <button className="cta cta-primary">Read more</button>
         </div>
-      </div>
-      <div className="card">
-        <img
-          src={product2}
-          alt=""
-        />
-        <div>
-          <div className="card-title-price">
-            <h3>Super Duper</h3>
-            <strong>
-              <s>3000</s> <span>1500 credits</span>
-            </strong>
-          </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel consequuntur dolorem nemo eius saepe debitis, at nihil repudiandae, suscipit animi sunt? Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est. Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est.</p>
-          <button className="cta cta-primary">Read more</button>
-        </div>
-      </div>
-      <div className="card">
-        <img
-          src={product3}
-          alt=""
-        />
-        <div>
-          <div className="card-title-price">
-            <h3>Black</h3>
-            <strong>
-              <s>3000</s> <span>1500 credits</span>
-            </strong>
-          </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel consequuntur dolorem nemo eius saepe debitis, at nihil repudiandae, suscipit animi sunt? Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est. Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est.</p>
-          <button className="cta cta-primary">Read more</button>
-        </div>
-      </div>
+      ))}
     </>
   );
 }
