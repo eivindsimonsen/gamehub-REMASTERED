@@ -51,6 +51,16 @@ function SignIn() {
         className="right-side login-form">
         <label>
           <input
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            hidden
+          />
+        </label>
+        <label>
+          <input
             type="email"
             placeholder="Email"
             value={email}
