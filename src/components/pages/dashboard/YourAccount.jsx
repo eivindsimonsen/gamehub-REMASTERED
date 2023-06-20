@@ -1,6 +1,5 @@
 function YourAccount(props) {
   const { user } = props;
-  console.log(user);
 
   return (
     <>
