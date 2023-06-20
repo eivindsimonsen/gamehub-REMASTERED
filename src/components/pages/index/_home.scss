@@ -177,6 +177,7 @@ $animationSpeed: 40s;
   }
 }
 
+// reviews
 .reviews {
   &-read {
     display: flex;
@@ -249,4 +250,9 @@ $animationSpeed: 40s;
 
 .rating-review {
   width: auto;
+}
+
+.reviews-container {
+  display: flex;
+  flex-direction: column;
 }

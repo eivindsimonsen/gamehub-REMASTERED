@@ -69,7 +69,7 @@ function Home() {
       <section className="reviews container">
         <h2>Site Reviews</h2>
         <hr />
-        <div>
+        <div className="reviews-container">
           <Reviews />
           <Reviews />
           <PostReview />
