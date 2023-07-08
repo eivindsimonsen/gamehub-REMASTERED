@@ -11,6 +11,7 @@ import Sell from "./components/pages/sell/Sell";
 import Login from "./components/pages/login/Login";
 import NotFound from "./components/pages/notfound/NotFound";
 import Dashboard from "./components/pages/dashboard/Dashboard";
+import Details from "./components/pages/details/Details";
 // context
 import { AuthContextProvider } from "./context/AuthContext";
 // components
@@ -53,6 +54,10 @@ function App() {
             <Route
               path="/*"
               element={<NotFound />}
+            />
+            <Route
+              path="/details/:id"
+              element={<Details />}
             />
           </Routes>
         </main>
