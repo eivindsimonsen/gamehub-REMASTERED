@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 // functions
 import { db } from "../../../firebase";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { Link } from "react-router-dom";
 // components
 import Spinner from "../../common/Spinner";
 
@@ -40,8 +41,6 @@ function Games() {
       return () => unsubscribe();
     }
   }, [showAll, showPre, showSales]);
-
-  console.log(games);
 
   return (
     <>
@@ -83,26 +82,28 @@ function Games() {
         <div className="games-container">
           {isLoading && <Spinner />}
           {games.map((game, index) => (
-            <div
-              className="games-container-content"
-              key={index}>
-              <img
-                src={game.image}
-                alt={game.title}
-              />
-              <div className="games-container-content-hidden">
-                <p>{game.title}</p>
-                {game.sale ? (
-                  <>
-                    <s>{game.price}</s> <p>{game.price - game.discount} credits</p>
-                  </>
-                ) : (
-                  <>
-                    <p>{game.price} credits</p>
-                  </>
-                )}
+            <Link
+              key={index}
+              to={`/details/${game.id}`}>
+              <div className="games-container-content">
+                <img
+                  src={game.image}
+                  alt={game.title}
+                />
+                <div className="games-container-content-hidden">
+                  <p>{game.title}</p>
+                  {game.sale ? (
+                    <>
+                      <s>{game.price}</s> <p>{game.price - game.discount} credits</p>
+                    </>
+                  ) : (
+                    <>
+                      <p>{game.price} credits</p>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
