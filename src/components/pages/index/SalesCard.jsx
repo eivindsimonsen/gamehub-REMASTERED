@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 // functions
 import { db } from "../../../firebase";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 function SalesCard() {
   const [games, setGames] = useState([]);
@@ -40,7 +41,9 @@ function SalesCard() {
               </strong>
             </div>
             <p>{game.description}</p>
-            <button className="cta cta-primary">Read more</button>
+            <Link to={`details/${game.id}`}>
+              <button className="cta cta-primary">Read more</button>
+            </Link>
           </div>
         </div>
       ))}
