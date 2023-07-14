@@ -39,7 +39,30 @@ function Details() {
     return <Spinner />;
   }
 
-  return <div>{game.title}</div>;
+  return (
+    <section className="container details-container">
+      <img
+        src={game?.image}
+        alt=""
+      />
+      <div className="details-content">
+        <h1>{game?.title}</h1>
+        <p>{game?.description}</p>
+        <div className="details-pricetags">
+          {game.sale ? (
+            <>
+              <s>{game.price}</s> <p>{game.price - game.discount} credits</p>
+            </>
+          ) : (
+            <>
+              <p>{game.price} credits</p>
+            </>
+          )}
+        </div>
+        <button className="cta cta-primary cta-primary--details">Add to cart</button>
+      </div>
+    </section>
+  );
 }
 
 export default Details;
