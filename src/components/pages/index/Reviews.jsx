@@ -1,6 +1,31 @@
 import image from "../../../assets/profile-image.jpg";
+// hooks
+import { useEffect, useState } from "react";
+// firebase functions
+import { db } from "../../../firebase";
+import { collection, onSnapshot } from "firebase/firestore";
+// components
+import Spinner from "../../common/Spinner";
 
 function Reviews() {
+  const [review, setReview] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "reviews"), (querySnapshot) => {
+      let reviewArr = [];
+      querySnapshot.forEach((doc) => {
+        reviewArr.push({ ...doc.data(), id: doc.id });
+      });
+      setReview(reviewArr);
+      setIsLoading(false);
+    });
+    // Clean up function
+    return () => unsubscribe();
+  }, []);
+
+  console.log(review);
+
   return (
     <div className="reviews-read">
       <img
