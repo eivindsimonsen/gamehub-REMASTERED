@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { db } from "../../../firebase";
 import { collection, onSnapshot } from "firebase/firestore";
 // components
-import Spinner from "../../common/Spinner";
+import Spinner from "./../../common/Spinner";
 
 function Reviews() {
   const [review, setReview] = useState([]);
@@ -26,21 +26,58 @@ function Reviews() {
 
   console.log(review);
 
+  function renderStars(rating) {
+    const totalStars = 5;
+    // Number of filled stars (integer part of rating)
+    const filledStars = Math.floor(rating);
+
+    // Array to store the JSX elements representing star icons
+    const starIcons = [];
+
+    // Add a filled star icon to the array
+    for (let i = 0; i < filledStars; i++) {
+      starIcons.push(
+        <i
+          className="fa-solid fa-star"
+          key={i}></i>
+      );
+    }
+
+    // Calculate the number of empty stars
+    const emptyStars = totalStars - filledStars;
+    for (let i = 0; i < emptyStars; i++) {
+      starIcons.push(
+        <i
+          className="fa-regular fa-star"
+          key={filledStars + 1 + i}></i>
+      );
+    }
+
+    // Return the array of star icons
+    return starIcons;
+  }
+
   return (
-    <div className="reviews-read">
-      <img
-        src={image}
-        alt=""
-      />
-      <div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor libero, ratione vel consequatur, quam cumque quibusdam velit ipsa eveniet illum aliquid praesentium explicabo rerum voluptatem voluptates, facilis iure quas ipsum fuga modi! Dicta assumenda beatae qui cum quis, obcaecati sint?</p>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-regular fa-star"></i>
-      </div>
-    </div>
+    <>
+      {isLoading && <Spinner />}
+      {review.map((reviews, index) => (
+        <div className="reviews-read">
+          <img
+            src={image}
+            alt=""
+          />
+          <div key={index}>
+            <p>{reviews.text}</p>
+            {renderStars(reviews.rating)}
+            {/* <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-regular fa-star"></i> */}
+          </div>
+        </div>
+      ))}
+    </>
   );
 }
 
