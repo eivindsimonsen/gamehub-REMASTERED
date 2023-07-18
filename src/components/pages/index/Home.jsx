@@ -71,7 +71,6 @@ function Home() {
         <hr />
         <div className="reviews-container">
           <Reviews />
-          <Reviews />
           <PostReview />
         </div>
       </section>
