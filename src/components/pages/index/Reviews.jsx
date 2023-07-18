@@ -69,11 +69,6 @@ function Reviews() {
           <div key={index}>
             <p>{reviews.text}</p>
             {renderStars(reviews.rating)}
-            {/* <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-regular fa-star"></i> */}
           </div>
         </div>
       ))}
