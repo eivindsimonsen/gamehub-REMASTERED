@@ -3,7 +3,7 @@ import image from "../../../assets/profile-image.jpg";
 import { useEffect, useState } from "react";
 // firebase functions
 import { db } from "../../../firebase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 // components
 import Spinner from "./../../common/Spinner";
 
@@ -12,7 +12,7 @@ function Reviews() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "reviews"), (querySnapshot) => {
+    const unsubscribe = onSnapshot(query(collection(db, "reviews"), orderBy("createdAt", "desc")), (querySnapshot) => {
       let reviewArr = [];
       querySnapshot.forEach((doc) => {
         reviewArr.push({ ...doc.data(), id: doc.id });
@@ -24,7 +24,7 @@ function Reviews() {
     return () => unsubscribe();
   }, []);
 
-  console.log(review);
+  // console.log(review);
 
   function renderStars(rating) {
     const totalStars = 5;
@@ -61,7 +61,9 @@ function Reviews() {
     <>
       {isLoading && <Spinner />}
       {review.map((reviews, index) => (
-        <div className="reviews-read">
+        <div
+          key={index}
+          className="reviews-read">
           <img
             src={image}
             alt=""
