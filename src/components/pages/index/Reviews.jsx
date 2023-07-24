@@ -1,4 +1,3 @@
-import image from "../../../assets/profile-image.jpg";
 // hooks
 import { useEffect, useState } from "react";
 // firebase functions
