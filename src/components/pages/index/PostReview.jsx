@@ -10,6 +10,8 @@ function PostReview() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
 
+  console.log(user);
+
   // Gives the rating state a value from 0 - 5 based on what star is clicked
   const chooseRating = (value) => {
     setRating(value);
@@ -35,6 +37,7 @@ function PostReview() {
       rating: rating,
       text: message,
       createdAt: serverTimestamp(),
+      userPhoto: user.photoURL,
     });
   };
 
