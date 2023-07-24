@@ -24,8 +24,6 @@ function Reviews() {
     return () => unsubscribe();
   }, []);
 
-  // console.log(review);
-
   function renderStars(rating) {
     const totalStars = 5;
     // Number of filled stars (integer part of rating)
@@ -65,7 +63,7 @@ function Reviews() {
           key={index}
           className="reviews-read">
           <img
-            src={image}
+            src={reviews.userPhoto}
             alt=""
           />
           <div key={index}>
