@@ -78,3 +78,29 @@
   opacity: 0.4;
   z-index: 1;
 }
+
+.cart-item-discount {
+  display: flex;
+  align-items: center;
+
+  s {
+    color: $AccentColor;
+  }
+}
+
+.cart-item-total {
+  color: $PrimaryColor;
+  font-weight: 500;
+  text-align: right;
+}
+
+.cart-item-count {
+  position: absolute;
+  top: -13px;
+  right: -10px;
+  color: $Magnolia;
+  background: $DamnGoodPurple;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 0.6rem;
+}
