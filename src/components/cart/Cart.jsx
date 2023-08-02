@@ -1,10 +1,9 @@
 // hooks
 import { useState } from "react";
-// images
-import image from "../../assets/GameHub_covers.jpg";
 
-function Cart() {
+function Cart(props) {
   const [openCart, setOpenCart] = useState(false);
+  const { cartItemCount, totalCredits, cartItemsWithQuantity } = props;
 
   const showCart = () => {
     setOpenCart(!openCart);
@@ -12,38 +11,45 @@ function Cart() {
 
   return (
     <>
-      <i
-        onClick={showCart}
-        className="fa-solid fa-cart-shopping"></i>
+      {
+        <i
+          onClick={showCart}
+          className="fa-solid fa-cart-shopping">
+          {cartItemCount > 0 && <span className="cart-item-count">{cartItemCount}</span>}
+        </i>
+      }
       {openCart && (
         <>
           <div
             onClick={showCart}
             className="black-overlay"></div>
           <section id="cart">
-            <div className="cart-item">
-              <img
-                src={image}
-                alt=""
-              />
-              <div className="cart-item-texts">
-                <i className="fa-regular fa-trash-can"></i>
-                <p>Ping pong championship</p>
-                <p>9000 credits</p>
+            {cartItemsWithQuantity.map((item, index) => (
+              <div
+                key={index}
+                className="cart-item">
+                <img
+                  src={item.image}
+                  alt=""
+                />
+                <div className="cart-item-texts">
+                  <i className="fa-regular fa-trash-can"></i>
+                  <p>{`${item.title} x${item.quantity}`}</p>
+                  <p className="cart-item-discount">
+                    {item.sale ? (
+                      <>
+                        <s>{item.price}</s> <p>{item.price - item.discount} credits</p>
+                      </>
+                    ) : (
+                      <>
+                        <p>{item.price} credits</p>
+                      </>
+                    )}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="cart-item">
-              <img
-                src={image}
-                alt=""
-              />
-              <div className="cart-item-texts">
-                <i className="fa-regular fa-trash-can"></i>
-                <p>Ping pong championship</p>
-                <p>9000 credits</p>
-              </div>
-            </div>
-            <p>Total: 9000 credits</p>
+            ))}
+            <p className="cart-item-total">Total: {totalCredits} credits</p>
             <button className="cta cta-alt">Checkout</button>
           </section>
         </>
