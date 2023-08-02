@@ -30,14 +30,25 @@ function Details() {
     fetchGame();
   }, [id]);
 
-  // REMEMBER TO REMOVE THIS
-  useEffect(() => {
-    console.log(game);
-  }, [game]);
-
   if (!game) {
     return <Spinner />;
   }
+
+  const addToCart = () => {
+    // Check if local storage is available in the browser
+    if (typeof window !== "undefined" && window.localStorage) {
+      // Retrieve existing cart items from local storage
+      const existingCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+      // Add the current game to the cart items
+      const updatedCartItems = [...existingCartItems, game];
+
+      // Store the updated cart items in local storage
+      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+
+      window.location.reload();
+    }
+  };
 
   return (
     <section className="container details-container">
@@ -59,7 +70,11 @@ function Details() {
             </>
           )}
         </div>
-        <button className="cta cta-primary cta-primary--details">Add to cart</button>
+        <button
+          onClick={addToCart}
+          className="cta cta-primary cta-primary--details">
+          Add to cart
+        </button>
       </div>
     </section>
   );
