@@ -9,6 +9,18 @@ function Cart(props) {
     setOpenCart(!openCart);
   };
 
+  // Function to remove an item from the cart and localStorage
+  const removeItemFromCart = (index) => {
+    // Create a copy of the cartItemsWithQuantity array.
+    const updatedCartItems = [...cartItemsWithQuantity];
+    // Remove the item at the specified index.
+    updatedCartItems.splice(index, 1);
+    // Update the state and local storage.
+
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    window.location.reload();
+  };
+
   return (
     <>
       {
@@ -33,7 +45,9 @@ function Cart(props) {
                   alt=""
                 />
                 <div className="cart-item-texts">
-                  <i className="fa-regular fa-trash-can"></i>
+                  <i
+                    className="fa-regular fa-trash-can"
+                    onClick={() => removeItemFromCart(index)}></i>
                   <p>{`${item.title} x${item.quantity}`}</p>
                   <p className="cart-item-discount">
                     {item.sale ? (
