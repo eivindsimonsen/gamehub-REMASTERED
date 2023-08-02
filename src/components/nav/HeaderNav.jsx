@@ -1,5 +1,5 @@
 // hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // packages
 import { NavLink, Link, useNavigate } from "react-router-dom";
 // images
@@ -10,7 +10,10 @@ import Cart from "../cart/Cart";
 import { UserAuth } from "../../context/AuthContext";
 
 function HeaderNav() {
+  // State to keep track of cart items count for the cart icon
+  const [cartItemCount, setCartItemCount] = useState(0);
   const { user, logout } = UserAuth() || {};
+
   // states
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
@@ -28,6 +31,33 @@ function HeaderNav() {
       console.log(e.message);
     }
   };
+
+  // Retrieve cart items from local storage
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+  // Function to count the quantity of each unique item
+  const countItemQuantity = (items) => {
+    const itemMap = {};
+    items.forEach((item) => {
+      if (itemMap[item.id]) {
+        itemMap[item.id].quantity++;
+      } else {
+        itemMap[item.id] = { ...item, quantity: 1 };
+      }
+    });
+    return Object.values(itemMap);
+  };
+
+  // Get the cart items with quantity indicators
+  const cartItemsWithQuantity = countItemQuantity(cartItems);
+
+  // Calculate the total with quantity and discounts considered
+  const totalCredits = cartItemsWithQuantity.reduce((total, item) => total + (item.sale ? item.price - item.discount : item.price) * item.quantity, 0);
+
+  // Update the cart items count whenever the cart items change
+  useEffect(() => {
+    setCartItemCount(cartItems.length);
+  }, [cartItems]);
 
   return (
     <>
@@ -58,7 +88,11 @@ function HeaderNav() {
             />
           </div>
           <li className="cart-container">
-            <Cart />
+            <Cart
+              cartItemCount={cartItemCount}
+              totalCredits={totalCredits}
+              cartItemsWithQuantity={cartItemsWithQuantity}
+            />
           </li>
           <li>
             {user ? (
