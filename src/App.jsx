@@ -12,6 +12,8 @@ import Login from "./components/pages/login/Login";
 import NotFound from "./components/pages/notfound/NotFound";
 import Dashboard from "./components/pages/dashboard/Dashboard";
 import Details from "./components/pages/details/Details";
+import Success from "./components/cart/Success";
+import Canceled from "./components/cart/Canceled";
 // context
 import { AuthContextProvider } from "./context/AuthContext";
 // components
@@ -58,6 +60,14 @@ function App() {
             <Route
               path="/details/:id"
               element={<Details />}
+            />
+            <Route
+              path="/success"
+              element={<Success />}
+            />
+            <Route
+              path="/canceled"
+              element={<Canceled />}
             />
           </Routes>
         </main>
