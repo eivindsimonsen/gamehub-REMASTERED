@@ -7,7 +7,7 @@ const cors = require("cors");
 app.use(express.json());
 app.use(
   cors({
-    // If in dev mode, use SERVER_URL.
+    // If in dev mode, use SERVER_URL. Create an env file
     origin: process.env.CLIENT_URL,
   })
 );
