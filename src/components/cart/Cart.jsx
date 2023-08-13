@@ -21,6 +21,40 @@ function Cart(props) {
     window.location.reload();
   };
 
+  // STRIPE PAYMENT CODE
+  // console.log(typeof cartItemsWithQuantity);
+
+  const items = [];
+  for (const key in cartItemsWithQuantity) {
+    if (cartItemsWithQuantity.hasOwnProperty(key)) {
+      const item = cartItemsWithQuantity[key];
+      items.push({ id: item.stripeID, quantity: item.quantity });
+    }
+  }
+
+  // console.log(typeof items);
+
+  const fetchStripe = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:3000/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ items }),
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        window.location = url;
+      })
+      .catch((e) => {
+        console.error(e.error);
+      });
+  };
+
   return (
     <>
       {
@@ -35,7 +69,10 @@ function Cart(props) {
           <div
             onClick={showCart}
             className="black-overlay"></div>
-          <section id="cart">
+          <form
+            id="cart"
+            action="/create-checkout-session"
+            method="POST">
             {cartItemsWithQuantity.map((item, index) => (
               <div
                 key={index}
@@ -64,8 +101,12 @@ function Cart(props) {
               </div>
             ))}
             <p className="cart-item-total">Total: {totalCredits} credits</p>
-            <button className="cta cta-alt">Checkout</button>
-          </section>
+            <button
+              className="cta cta-alt"
+              onClick={fetchStripe}>
+              Checkout
+            </button>
+          </form>
         </>
       )}
     </>
