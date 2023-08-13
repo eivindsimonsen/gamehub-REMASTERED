@@ -1,4 +1,3 @@
-require("dotenv").config();
 // hooks
 import { useState } from "react";
 
