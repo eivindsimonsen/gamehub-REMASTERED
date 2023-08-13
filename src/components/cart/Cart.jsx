@@ -1,3 +1,4 @@
+require("dotenv").config();
 // hooks
 import { useState } from "react";
 
@@ -36,7 +37,7 @@ function Cart(props) {
 
   const fetchStripe = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/create-checkout-session", {
+    fetch(`${process.env.PORT}/create-checkout-session`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
