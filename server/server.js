@@ -12,7 +12,7 @@ app.use(
   cors({
     // If in dev mode, use SERVER_URL. Create an env file
     // origin: process.env.CLIENT_URL,
-    origin: "https://gamehubremastered.netlify.app/",
+    origin: "https://gamehubremastered.netlify.app",
   })
 );
 
