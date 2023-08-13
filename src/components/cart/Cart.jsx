@@ -22,8 +22,6 @@ function Cart(props) {
   };
 
   // STRIPE PAYMENT CODE
-  // console.log(typeof cartItemsWithQuantity);
-
   const items = [];
   for (const key in cartItemsWithQuantity) {
     if (cartItemsWithQuantity.hasOwnProperty(key)) {
@@ -31,8 +29,6 @@ function Cart(props) {
       items.push({ id: item.stripeID, quantity: item.quantity });
     }
   }
-
-  // console.log(typeof items);
 
   const fetchStripe = (e) => {
     e.preventDefault();
