@@ -36,7 +36,7 @@ function Cart(props) {
 
   const fetchStripe = (e) => {
     e.preventDefault();
-    fetch(`${process.env.PORT}/create-checkout-session`, {
+    fetch("https://gamehubremastered.netlify.app/create-checkout-session", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
