@@ -36,7 +36,7 @@ function Cart(props) {
 
   const fetchStripe = (e) => {
     e.preventDefault();
-    fetch("https://gorgeous-melomakarona-d5abd6.netlify.app/create-checkout-session", {
+    fetch("http://localhost:3000/create-checkout-session", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
