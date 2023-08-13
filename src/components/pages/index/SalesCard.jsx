@@ -21,8 +21,6 @@ function SalesCard() {
     return () => unsubscribe();
   }, []);
 
-  console.log(games);
-
   return (
     <>
       {games.map((game, index) => (
