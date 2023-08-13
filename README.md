@@ -1,8 +1,7 @@
 # Gamehub Remastered
 
-> This project is mainly backend focused. It features user creation, log in functionality and CRUD operations by firebase database.
-> Project is paused, because I want to implement stripe payments, but I need a VAT number, which I don't possess.
-> Live demo [_here_](https://gorgeous-melomakarona-d5abd6.netlify.app/). <!-- If you have the project hosted somewhere, include the link here. -->
+> This project is mainly backend focused. It features user creation, log in functionality and CRUD operations by firebase database. The user can now also purchase video games through stripe.
+> Live demo [_here_](https://gamehubremastered.netlify.app/).
 
 ## Table of Contents
 
@@ -21,19 +20,25 @@
 - Project shall showcase several video games fetched from database.
 - Give the user the availability to create a user, and log in as that user.
 - Add items to shopping cart.
+- Purchase items.
 
 ## Technologies Used
 
 - firebase: ^9.22.1,
 - react: ^18.2.0,
 - react-dom: ^18.2.0,
-- sass: ^1.62.0
+- sass: ^1.62.0,
+- stripe: ^12.18.0,
+- express: 4.18.2,
+- dotenv: ^16.3.1,
+- cors: ^2.8.5
 
 ## Features
 
 - Full CRUD functionality
 - Login authentication
 - Database storing
+- Full cart functionality
 
 ## Screenshots
 
@@ -91,9 +96,73 @@ const addGame = async (e) => {
 };
 ```
 
+You also need to set up a server using Node.
+Here you also send a post request to stripe with the products from your cart.
+Remember to create an env file with secret content, ref STRIPE_PRIVATE_KEY
+
+```jsx
+require("dotenv").config();
+
+const express = require("express");
+const app = express();
+const cors = require("cors");
+
+app.use(express.json());
+app.use(
+  cors({
+    // If in dev mode, use SERVER_URL
+    origin: process.env.CLIENT_URL,
+  })
+);
+
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
+
+// Remember to create products on your stripe account
+const storeItems = new Map([
+  ["YOUR_STRIPE_PRODUCT_ID", { priceInNok: 0, name: "YOUR_PRODUCT_NAME" }],
+  ["YOUR_STRIPE_PRODUCT_ID", { priceInNok: 0, name: "YOUR_PRODUCT_NAME" }],
+  ["YOUR_STRIPE_PRODUCT_ID", { priceInNok: 0, name: "YOUR_PRODUCT_NAME" }],
+  ["YOUR_STRIPE_PRODUCT_ID", { priceInNok: 0, name: "YOUR_PRODUCT_NAME" }],
+  ["YOUR_STRIPE_PRODUCT_ID", { priceInNok: 0, name: "YOUR_PRODUCT_NAME" }],
+  ["YOUR_STRIPE_PRODUCT_ID", { priceInNok: 0, name: "YOUR_PRODUCT_NAME" }],
+  ["YOUR_STRIPE_PRODUCT_ID", { priceInNok: 0, name: "YOUR_PRODUCT_NAME" }],
+  ["YOUR_STRIPE_PRODUCT_ID", { priceInNok: 0, name: "YOUR_PRODUCT_NAME" }],
+  ["YOUR_STRIPE_PRODUCT_ID", { priceInNok: 0, name: "YOUR_PRODUCT_NAME" }],
+]);
+
+app.post("/create-checkout-session", async (req, res) => {
+  try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "payment",
+      line_items: req.body.items.map((item) => {
+        const storeItem = storeItems.get(item.id);
+        return {
+          price_data: {
+            currency: "nok",
+            product_data: {
+              name: storeItem.name,
+            },
+            unit_amount: storeItem.priceInNok,
+          },
+          quantity: item.quantity,
+        };
+      }),
+      success_url: `${process.env.CLIENT_URL}/success`,
+      cancel_url: `${process.env.CLIENT_URL}/canceled`,
+    });
+    res.json({ url: session.url });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.listen(3000);
+```
+
 ## Project Status
 
-Project is: _paused_ /
+Project is: _ongoing_ /
 
 ## Contact
 
