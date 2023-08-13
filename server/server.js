@@ -1,12 +1,11 @@
 // server/server.js
-const path = require("path");
-require("dotenv").config({ path: path.join(__dirname, "../env") });
+require("dotenv").config();
 
 const express = require("express");
 const app = express();
 const cors = require("cors");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(
@@ -50,8 +49,8 @@ app.post("/create-checkout-session", async (req, res) => {
           quantity: item.quantity,
         };
       }),
-      success_url: `${process.env.PORT || process.env.CLIENT_URL}/success`,
-      cancel_url: `${process.env.PORT || process.env.CLIENT_URL}/canceled`,
+      success_url: `${process.env.CLIENT_URL}/success`,
+      cancel_url: `${process.env.CLIENT_URL}/canceled`,
     });
     res.json({ url: session.url });
   } catch (e) {
@@ -59,6 +58,8 @@ app.post("/create-checkout-session", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+/* app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-});
+}); */
+
+app.listen(3001);
