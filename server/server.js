@@ -7,7 +7,8 @@ const cors = require("cors");
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://gorgeous-melomakarona-d5abd6.netlify.app",
+    // If in dev mode, use localhost
+    origin: process.env.CLIENT_URL,
   })
 );
 
