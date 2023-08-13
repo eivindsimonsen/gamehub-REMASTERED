@@ -35,7 +35,7 @@ function SalesCard() {
             <div className="card-title-price">
               <h3>{game.title}</h3>
               <strong>
-                <s>{game.price}</s> <span>{game.price - game.discount} credits</span>
+                <s>{game.price}</s> <span>{game.price - game.discount} kr</span>
               </strong>
             </div>
             <p>{game.description}</p>

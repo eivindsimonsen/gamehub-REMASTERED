@@ -89,18 +89,18 @@ function Cart(props) {
                   <p className="cart-item-discount">
                     {item.sale ? (
                       <>
-                        <s>{item.price}</s> <p>{item.price - item.discount} credits</p>
+                        <s>{item.price}</s> <p>{item.price - item.discount} kr</p>
                       </>
                     ) : (
                       <>
-                        <p>{item.price} credits</p>
+                        <p>{item.price} kr</p>
                       </>
                     )}
                   </p>
                 </div>
               </div>
             ))}
-            <p className="cart-item-total">Total: {totalCredits} credits</p>
+            <p className="cart-item-total">Total: {totalCredits} kr</p>
             <button
               className="cta cta-alt"
               onClick={fetchStripe}>

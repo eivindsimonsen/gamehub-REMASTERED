@@ -37,7 +37,7 @@ function PopularCard() {
             <div className="card-title-price">
               <h3>{game.title}</h3>
               <strong>
-                <span>{game.price} credits</span>
+                <span>{game.price} kr</span>
               </strong>
             </div>
             <p>{game.description}</p>

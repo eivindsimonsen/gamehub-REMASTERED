@@ -14,7 +14,7 @@ function SellCard() {
           <div className="card-title-price">
             <h3>Ping Pong</h3>
             <strong>
-              <span>1500 credits</span>
+              <span>1500 kr</span>
             </strong>
           </div>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel consequuntur dolorem nemo eius saepe debitis, at nihil repudiandae, suscipit animi sunt? Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est. Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est.</p>
@@ -30,7 +30,7 @@ function SellCard() {
           <div className="card-title-price">
             <h3>Super duper</h3>
             <strong>
-              <span>1500 credits</span>
+              <span>1500 kr</span>
             </strong>
           </div>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel consequuntur dolorem nemo eius saepe debitis, at nihil repudiandae, suscipit animi sunt? Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est.</p>
@@ -46,7 +46,7 @@ function SellCard() {
           <div className="card-title-price">
             <h3>Black</h3>
             <strong>
-              <span>1500 credits</span>
+              <span>1500 kr</span>
             </strong>
           </div>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel consequuntur dolorem nemo eius saepe debitis, at nihil repudiandae, suscipit animi sunt? Cum dolores soluta provident ex, nisi temporibus id voluptate numquam perspiciatis, explicabo illo exercitationem architecto fuga, eum aliquid est.</p>

@@ -62,11 +62,11 @@ function Details() {
         <div className="details-pricetags">
           {game.sale ? (
             <>
-              <s>{game.price}</s> <p>{game.price - game.discount} credits</p>
+              <s>{game.price}</s> <p>{game.price - game.discount} kr</p>
             </>
           ) : (
             <>
-              <p>{game.price} credits</p>
+              <p>{game.price} kr</p>
             </>
           )}
         </div>

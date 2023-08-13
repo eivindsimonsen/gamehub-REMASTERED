@@ -17,7 +17,7 @@ function ListedGames() {
             />
             <div>
               <figcaption>Ping Pong</figcaption>
-              <p>3000 credits</p>
+              <p>3000 kr</p>
             </div>
           </figure>
           <figure>
@@ -27,7 +27,7 @@ function ListedGames() {
             />
             <div>
               <figcaption>Super duper</figcaption>
-              <p>3000 credits</p>
+              <p>3000 kr</p>
             </div>
           </figure>
           <figure>
@@ -37,7 +37,7 @@ function ListedGames() {
             />
             <div>
               <figcaption>Black</figcaption>
-              <p>3000 credits</p>
+              <p>3000 kr</p>
             </div>
           </figure>
           <figure>
@@ -47,7 +47,7 @@ function ListedGames() {
             />
             <div>
               <figcaption>Furious</figcaption>
-              <p>3000 credits</p>
+              <p>3000 kr</p>
             </div>
           </figure>
         </section>
