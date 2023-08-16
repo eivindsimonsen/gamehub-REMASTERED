@@ -100,6 +100,18 @@ You also need to set up a server using Node. And make sure the server is running
 Here you also send a post request to stripe with the products from your cart.
 Remember to create an env file with secret content, ref STRIPE_PRIVATE_KEY
 
+To start the server, enter the server folder with:
+
+```console
+cd server/
+```
+
+then
+
+```console
+npm run devStart
+```
+
 ```jsx
 require("dotenv").config();
 
